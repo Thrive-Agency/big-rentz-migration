@@ -115,7 +115,6 @@ function processMapping() {
     } catch (err) {
       console.error('Error generating column map:', err);
     }
-    timer.end();
   }
   catch (err) {
     console.error('Unexpected error:', err);
