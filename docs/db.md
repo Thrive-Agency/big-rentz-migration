@@ -73,7 +73,3 @@ Updates the `data` column of an existing record by ID. Returns `true` if the upd
 ```js
 const success = await db.updateRecord(1, { foo: 'updated', value: 456 });
 ```
-
-## Utilities for Script Development
-- [ScriptHeader](./script-header.md): Print a formatted, colored header for your scripts.
-- [ScriptTimer](./script-timer.md): Track and print execution time with color support.
