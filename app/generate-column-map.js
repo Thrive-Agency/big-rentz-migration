@@ -46,18 +46,41 @@ if (!fs.existsSync(fileArg)) {
 }
 
 if (fs.existsSync(outArg)) {
-  console.log(`Mapping file already exists: ${outArg}`);
-  const existing = fs.readFileSync(outArg, 'utf8');
-  console.log('Current mapping file contents:\n', existing);
-  process.stdout.write('Would you like to delete it and start again? (y/N): ');
+  console.log(`\n${colors.red}---------------------------------------${colors.reset}`);
+  console.log(`${colors.red}Warning!  Mapping field already exists!${colors.reset}`);
+  console.log(`${colors.red}---------------------------------------${colors.reset}\n`);
+  console.log('How would you like to proceed:');
+  console.log('1: Print existing json');
+  console.log('2: Cancel');
+  console.log('3: Delete existing mapping and create new.');
+  process.stdout.write('Enter your choice (default: Cancel): ');
   process.stdin.setEncoding('utf8');
   process.stdin.once('data', answer => {
-    if (answer.trim().toLowerCase() === 'y') {
-      fs.unlinkSync(outArg);
-      console.log('Old mapping file deleted. Proceeding...');
-      processMapping();
-    } else {
+    const choice = answer.trim();
+    if (choice === '1') {
+      const existing = fs.readFileSync(outArg, 'utf8');
+      console.log('\nCurrent mapping file contents:\n', existing);
+      timer.end();
+      process.exit(0);
+    } else if (choice === '2' || choice === '') {
       console.log('Aborting. No changes made.');
+      timer.end();
+      process.exit(0);
+    } else if (choice === '3') {
+      process.stdout.write('Type DELETE to confirm: ');
+      process.stdin.once('data', confirm => {
+        if (confirm.trim() === 'DELETE') {
+          fs.unlinkSync(outArg);
+          console.log('Old mapping file deleted. Proceeding...');
+          processMapping();
+        } else {
+          console.log('Confirmation failed. Aborting.');
+          timer.end();
+          process.exit(0);
+        }
+      });
+    } else {
+      console.log('Invalid choice. Aborting.');
       timer.end();
       process.exit(0);
     }
