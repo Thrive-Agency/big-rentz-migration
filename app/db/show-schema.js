@@ -39,7 +39,6 @@ async function showSchema() {
       });
       console.log('');
     }
-    timer.end();
   } catch (err) {
     console.error('Error fetching schema:', err);
     timer.end();
