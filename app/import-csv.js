@@ -1,10 +1,17 @@
 import ScriptHeader from './utils/ScriptHeader.js';
 import ScriptTimer from './utils/ScriptTimer.js';
 import colors from './utils/colors.js';
+import getSingleCsvFile from './utils/getSingleCsvFile.js';
 
 const args = process.argv.slice(2);
-const fileArg = args.find(arg => arg.endsWith('.csv'));
 const checkHeaders = args.includes('-check-headers');
+let fileArg;
+try {
+  fileArg = getSingleCsvFile('./import');
+} catch (err) {
+  console.error(err.message);
+  process.exit(1);
+}
 
 const header = new ScriptHeader('CSV Import: Check Headers');
 header.print();

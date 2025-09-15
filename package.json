@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "init-db": "node ./app/db/init-db.js"
-  ,
-  "show-schema": "node ./app/db/show-schema.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init-db": "node ./app/db/init-db.js",
+    "show-schema": "node ./app/db/show-schema.js",
+    "generate-column-map": "node ./app/generate-column-map.js",
+    "check-csv-headers": "node ./app/import-csv.js -check-headers"
   },
   "repository": {
     "type": "git",

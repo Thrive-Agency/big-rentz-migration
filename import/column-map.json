@@ -1,0 +1,312 @@
+[
+  {
+    "original": "Entity ID",
+    "cleaned": "entity_id",
+    "count": 4198
+  },
+  {
+    "original": "Yext ID",
+    "cleaned": "yext_id",
+    "count": 4198
+  },
+  {
+    "original": "Name",
+    "cleaned": "name",
+    "count": 4198
+  },
+  {
+    "original": "Main Phone > ISO Country Code",
+    "cleaned": "main_phone_iso_country_code",
+    "count": 4198
+  },
+  {
+    "original": "Main Phone > Phone Number",
+    "cleaned": "main_phone_phone_number",
+    "count": 4198
+  },
+  {
+    "original": "Address > Line 1",
+    "cleaned": "address_line_1",
+    "count": 4198
+  },
+  {
+    "original": "Address > Line 2",
+    "cleaned": "address_line_2",
+    "count": 4
+  },
+  {
+    "original": "Address > Sublocality",
+    "cleaned": "address_sublocality",
+    "count": 2
+  },
+  {
+    "original": "Address > City",
+    "cleaned": "address_city",
+    "count": 4194
+  },
+  {
+    "original": "Address > Region",
+    "cleaned": "address_region",
+    "count": 4196
+  },
+  {
+    "original": "Address > Postal Code",
+    "cleaned": "address_postal_code",
+    "count": 4198
+  },
+  {
+    "original": "Address > Extra Description",
+    "cleaned": "address_extra_description",
+    "count": 4
+  },
+  {
+    "original": "Website URL > URL",
+    "cleaned": "website_url_url",
+    "count": 2
+  },
+  {
+    "original": "Active in Answers",
+    "cleaned": "active_in_answers",
+    "count": 4194
+  },
+  {
+    "original": "Answers Keywords",
+    "cleaned": "answers_keywords",
+    "count": 24
+  },
+  {
+    "original": "Location City State",
+    "cleaned": "location_city_state",
+    "count": 4196
+  },
+  {
+    "original": "Location State",
+    "cleaned": "location_state",
+    "count": 4196
+  },
+  {
+    "original": "Photo > URL",
+    "cleaned": "photo_url",
+    "count": 4198
+  },
+  {
+    "original": "Photo > Alternate Text",
+    "cleaned": "photo_alternate_text",
+    "count": 4
+  },
+  {
+    "original": "Photo > Description",
+    "cleaned": "photo_description",
+    "count": 2
+  },
+  {
+    "original": "Secondary CTA > Label",
+    "cleaned": "secondary_cta_label",
+    "count": 4194
+  },
+  {
+    "original": "Secondary CTA > Link Type",
+    "cleaned": "secondary_cta_link_type",
+    "count": 2
+  },
+  {
+    "original": "Secondary CTA > Link",
+    "cleaned": "secondary_cta_link",
+    "count": 2
+  },
+  {
+    "original": "Pages Phone Number",
+    "cleaned": "pages_phone_number",
+    "count": 4194
+  },
+  {
+    "original": "About CTA > Label",
+    "cleaned": "about_cta_label",
+    "count": 4196
+  },
+  {
+    "original": "About CTA > Link Type",
+    "cleaned": "about_cta_link_type",
+    "count": 4198
+  },
+  {
+    "original": "About CTA > Link",
+    "cleaned": "about_cta_link",
+    "count": 4198
+  },
+  {
+    "original": "Footer Address",
+    "cleaned": "footer_address",
+    "count": 4198
+  },
+  {
+    "original": "List of FAQ > Question",
+    "cleaned": "list_of_faq_question",
+    "count": 4198
+  },
+  {
+    "original": "List of FAQ > Answer",
+    "cleaned": "list_of_faq_answer",
+    "count": 4198
+  },
+  {
+    "original": "About Geomodifier",
+    "cleaned": "about_geomodifier",
+    "count": 4198
+  },
+  {
+    "original": "Guide List > Title",
+    "cleaned": "guide_list_title",
+    "count": 4198
+  },
+  {
+    "original": "Guide List > Description",
+    "cleaned": "guide_list_description",
+    "count": 4198
+  },
+  {
+    "original": "Guide List > CTA > Label",
+    "cleaned": "guide_list_cta_label",
+    "count": 4198
+  },
+  {
+    "original": "Guide List > CTA > Link Type",
+    "cleaned": "guide_list_cta_link_type",
+    "count": 4198
+  },
+  {
+    "original": "Guide List > CTA > Link",
+    "cleaned": "guide_list_cta_link",
+    "count": 4198
+  },
+  {
+    "original": "Rental Partner Label",
+    "cleaned": "rental_partner_label",
+    "count": 4198
+  },
+  {
+    "original": "Page Meta Title",
+    "cleaned": "page_meta_title",
+    "count": 4198
+  },
+  {
+    "original": "City Lat/Long > Latitude",
+    "cleaned": "city_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "City Lat/Long > Longitude",
+    "cleaned": "city_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Geocoded Lat/Long > Latitude",
+    "cleaned": "geocoded_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Geocoded Lat/Long > Longitude",
+    "cleaned": "geocoded_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Display Lat/Long > Latitude",
+    "cleaned": "yext_display_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Display Lat/Long > Longitude",
+    "cleaned": "yext_display_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Dropoff Lat/Long > Latitude",
+    "cleaned": "yext_dropoff_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Dropoff Lat/Long > Longitude",
+    "cleaned": "yext_dropoff_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Pickup Lat/Long > Latitude",
+    "cleaned": "yext_pickup_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Pickup Lat/Long > Longitude",
+    "cleaned": "yext_pickup_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Routable Lat/Long > Latitude",
+    "cleaned": "yext_routable_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Routable Lat/Long > Longitude",
+    "cleaned": "yext_routable_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Walkable Lat/Long > Latitude",
+    "cleaned": "yext_walkable_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Yext Walkable Lat/Long > Longitude",
+    "cleaned": "yext_walkable_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Display Lat/Long > Latitude",
+    "cleaned": "display_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Display Lat/Long > Longitude",
+    "cleaned": "display_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Dropoff Lat/Long > Latitude",
+    "cleaned": "dropoff_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Dropoff Lat/Long > Longitude",
+    "cleaned": "dropoff_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Pickup Lat/Long > Latitude",
+    "cleaned": "pickup_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Pickup Lat/Long > Longitude",
+    "cleaned": "pickup_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Routable Lat/Long > Latitude",
+    "cleaned": "routable_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Routable Lat/Long > Longitude",
+    "cleaned": "routable_lat_long_longitude",
+    "count": 4198
+  },
+  {
+    "original": "Walkable Lat/Long > Latitude",
+    "cleaned": "walkable_lat_long_latitude",
+    "count": 4198
+  },
+  {
+    "original": "Walkable Lat/Long > Longitude",
+    "cleaned": "walkable_lat_long_longitude",
+    "count": 4198
+  }
+]
