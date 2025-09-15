@@ -62,6 +62,18 @@ The raw PostgreSQL connection pool instance. Use for advanced queries if needed.
 db.pool.query('SELECT * FROM records');
 ```
 
+### createRecord
+Inserts a new row into the `records` table with the provided data (as JSON). Returns the new record's ID or `null` if failed.
+```js
+const id = await db.createRecord({ foo: 'bar', value: 123 });
+```
+
+### updateRecord
+Updates the `data` column of an existing record by ID. Returns `true` if the update succeeded, or `false` if it failed.
+```js
+const success = await db.updateRecord(1, { foo: 'updated', value: 456 });
+```
+
 ## Utilities for Script Development
 - [ScriptHeader](./script-header.md): Print a formatted, colored header for your scripts.
 - [ScriptTimer](./script-timer.md): Track and print execution time with color support.

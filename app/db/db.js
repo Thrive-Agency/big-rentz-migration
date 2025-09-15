@@ -78,10 +78,52 @@ const initSchema = async () => {
   }
 };
 
+/**
+ * Inserts a new record into the records table with the given data (JSON)
+ * @param {Object} data - The data to store in the record (will be stringified to JSON)
+ * @returns {Promise<number|null>} The new record's id, or null if failed
+ */
+const createRecord = async (data) => {
+  try {
+    if (typeof data !== 'object' || data === null) throw new Error('Data must be a non-null object');
+    const res = await pool.query(
+      'INSERT INTO records (data) VALUES ($1) RETURNING id',
+      [JSON.stringify(data)]
+    );
+    return res.rows[0].id;
+  } catch (err) {
+    console.error('Failed to create record:', err);
+    return null;
+  }
+};
+
+/**
+ * Updates the data column of a record by id
+ * @param {number} id - The record id to update
+ * @param {Object} data - The new data to store (will be stringified to JSON)
+ * @returns {Promise<boolean>} True if update succeeded, false otherwise
+ */
+const updateRecord = async (id, data) => {
+  try {
+    if (typeof id !== 'number' || id <= 0) throw new Error('Invalid record id');
+    if (typeof data !== 'object' || data === null) throw new Error('Data must be a non-null object');
+    const res = await pool.query(
+      'UPDATE records SET data = $1 WHERE id = $2',
+      [JSON.stringify(data), id]
+    );
+    return res.rowCount === 1;
+  } catch (err) {
+    console.error('Failed to update record:', err);
+    return false;
+  }
+};
+
 const db = {
   testConnection,
   pool,
   initSchema,
+  createRecord,
+  updateRecord,
 };
 
 export default db;
