@@ -1,6 +1,7 @@
 import { Pool } from 'pg';
-// ...existing code...
 import { config } from '../settings.js';
+import fs from 'fs';
+import path from 'path';
 
 const { MODE, PG_HOST, PG_PORT, PG_USER, PG_PASS, PG_DB, PG_CA_CERT_PATH, ALLOW_SELF_SIGNED_CERTS } = config;
 
@@ -58,9 +59,6 @@ const testConnection = async () => {
     return false;
   }
 }
-
-import fs from 'fs';
-import path from 'path';
 
 /**
  * Initializes the database tables using the schema.sql file
@@ -147,6 +145,27 @@ const deleteAllRecords = async () => {
   }
 };
 
+/**
+ * Gets the first available record from the records table
+ * Criteria: imported is false or null, imported_id and processing_started are not set
+ * @returns {Promise<Object|null>} The first available record row, or null if none
+ */
+const getFirstRecord = async () => {
+  try {
+    const res = await pool.query(`
+      SELECT * FROM records
+      WHERE (imported IS NULL OR imported = false)
+        AND (imported_id IS NULL)
+        AND (processing_started IS NULL)
+      ORDER BY id ASC LIMIT 1
+    `);
+    return res.rows[0] || null;
+  } catch (err) {
+    console.error('Failed to get first available record:', err);
+    return null;
+  }
+};
+
 const db = {
   testConnection,
   pool,
@@ -155,6 +174,7 @@ const db = {
   updateRecord,
   deleteAllRecords,
   getImportCount,
+  getFirstRecord,
 };
 
 export default db;

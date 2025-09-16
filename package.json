@@ -10,7 +10,8 @@
     "generate-column-map": "node ./app/generate-column-map.js",
     "check-csv-headers": "node ./app/check-csv.js -check-headers",
     "load-records": "node ./app/import-csv-to-db.js",
-    "reset-db": "node app/reset-db.js"
+    "reset-db": "node app/reset-db.js",
+    "test-wp-api": "node app/services/test-wp-api.js"
   },
   "repository": {
     "type": "git",
