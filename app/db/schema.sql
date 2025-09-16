@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS records (
     imported BOOLEAN DEFAULT FALSE,
     imported_id INTEGER,
     processing_started TIMESTAMP,
-    processing_complete TIMESTAMP
+    processing_complete TIMESTAMP,
+    processing BOOLEAN DEFAULT FALSE
 );
 
 CREATE INDEX IF NOT EXISTS idx_records_imported ON records(imported);

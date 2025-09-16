@@ -146,22 +146,42 @@ const deleteAllRecords = async () => {
 };
 
 /**
- * Gets the first available record from the records table
- * Criteria: imported is false or null, imported_id and processing_started are not set
- * @returns {Promise<Object|null>} The first available record row, or null if none
+ * Atomically gets and locks the next available record for processing
+ * Uses SELECT ... FOR UPDATE SKIP LOCKED to prevent race conditions
+ * @returns {Promise<Object|null>} The locked record row, or null if none
  */
-const getFirstRecord = async () => {
+const getAndLockNextRecord = async () => {
+  const client = await pool.connect();
   try {
-    const res = await pool.query(`
+    await client.query('BEGIN');
+    const selectRes = await client.query(`
       SELECT * FROM records
       WHERE (imported IS NULL OR imported = false)
         AND (imported_id IS NULL)
         AND (processing_started IS NULL)
-      ORDER BY id ASC LIMIT 1
+        AND (processing = false)
+      ORDER BY id ASC
+      LIMIT 1
+      FOR UPDATE SKIP LOCKED;
     `);
-    return res.rows[0] || null;
+    const record = selectRes.rows[0];
+    if (!record) {
+      await client.query('ROLLBACK');
+      client.release();
+      return null;
+    }
+    await client.query(
+      'UPDATE records SET processing_started = NOW(), processing = true WHERE id = $1',
+      [record.id]
+    );
+    await client.query('COMMIT');
+    client.release();
+    // Return the locked record with updated processing_started and processing
+    return { ...record, processing_started: new Date().toISOString(), processing: true };
   } catch (err) {
-    console.error('Failed to get first available record:', err);
+    await client.query('ROLLBACK');
+    client.release();
+    console.error('Failed to get and lock next available record:', err);
     return null;
   }
 };
@@ -174,7 +194,7 @@ const db = {
   updateRecord,
   deleteAllRecords,
   getImportCount,
-  getFirstRecord,
+  getAndLockNextRecord,
 };
 
 export default db;

@@ -88,17 +88,10 @@ const count = await db.getImportCount();
 console.log(`Imported records: ${count}`);
 ```
 
-### getFirstRecord
-Gets the first available record from the `records` table. Criteria:
-- `imported` is false or null
-- `imported_id` is not set
-- `processing_started` is not set
-Returns the first matching row or `null` if none found.
+### getAndLockNextRecord
+Atomically fetches and locks the next available record for processing. Uses a transaction and `SELECT ... FOR UPDATE SKIP LOCKED` to prevent race conditions. Sets `processing_started` to the current timestamp and `processing` to `true` to lock the record. Returns the locked record or `null` if none are available.
 ```js
-const record = await db.getFirstRecord();
-console.log('First available record:', record);
+const record = await db.getAndLockNextRecord();
+console.log('Locked record:', record);
 ```
-
-## Script Files
-- `generate-column-map.js`: Generates a column mapping JSON for the single CSV file in `/import`. Ensures the first element is flagged as index and checks for duplicate cleaned names.
-- `import-csv-to-db.js`: Imports CSV data into the database using the column map. Validates index, checks for existing rows, logs errors, and verifies import counts.
+**Note:** Unlock by setting `processing = false` and/or updating other status columns as needed.
