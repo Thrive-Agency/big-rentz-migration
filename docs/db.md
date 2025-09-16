@@ -73,3 +73,21 @@ Updates the `data` column of an existing record by ID. Returns `true` if the upd
 ```js
 const success = await db.updateRecord(1, { foo: 'updated', value: 456 });
 ```
+
+### deleteAllRecords
+Deletes all rows from the `records` table. Returns the number of rows deleted.
+```js
+const deleted = await db.deleteAllRecords();
+console.log(`Deleted ${deleted} rows from records table.`);
+```
+
+### getImportCount
+Gets the count of records in the `records` table where `imported = true`.
+```js
+const count = await db.getImportCount();
+console.log(`Imported records: ${count}`);
+```
+
+## Script Files
+- `generate-column-map.js`: Generates a column mapping JSON for the single CSV file in `/import`. Ensures the first element is flagged as index and checks for duplicate cleaned names.
+- `import-csv-to-db.js`: Imports CSV data into the database using the column map. Validates index, checks for existing rows, logs errors, and verifies import counts.
