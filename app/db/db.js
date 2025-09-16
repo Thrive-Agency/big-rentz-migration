@@ -118,12 +118,43 @@ const updateRecord = async (id, data) => {
   }
 };
 
+
+/**
+ * Gets the count of records where imported = true
+ * @returns {Promise<number>} Number of imported records
+ */
+const getImportCount = async () => {
+  try {
+    const res = await pool.query('SELECT COUNT(*) FROM records WHERE imported = true');
+    return parseInt(res.rows[0].count, 10);
+  } catch (err) {
+    console.error('Failed to get import count:', err);
+    return 0;
+  }
+};
+
+/**
+ * Deletes all rows from the records table
+ * @returns {Promise<number>} Number of rows deleted
+ */
+const deleteAllRecords = async () => {
+  try {
+    const res = await pool.query('DELETE FROM records');
+    return res.rowCount;
+  } catch (err) {
+    console.error('Failed to delete all records:', err);
+    return 0;
+  }
+};
+
 const db = {
   testConnection,
   pool,
   initSchema,
   createRecord,
   updateRecord,
+  deleteAllRecords,
+  getImportCount,
 };
 
 export default db;
