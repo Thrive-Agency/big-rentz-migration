@@ -89,9 +89,41 @@ console.log(`Imported records: ${count}`);
 ```
 
 ### getAndLockNextRecord
-Atomically fetches and locks the next available record for processing. Uses a transaction and `SELECT ... FOR UPDATE SKIP LOCKED` to prevent race conditions. Sets `processing_started` to the current timestamp and `processing` to `true` to lock the record. Returns the locked record or `null` if none are available.
+Atomically fetches and locks the next available record for processing. Uses a transaction and `SELECT ... FOR UPDATE SKIP LOCKED` to prevent race conditions. Sets `processing` to `true` to lock the record. Returns the locked record or `null` if none are available.
 ```js
 const record = await db.getAndLockNextRecord();
 console.log('Locked record:', record);
 ```
 **Note:** Unlock by setting `processing = false` and/or updating other status columns as needed.
+
+# Database Record Processing & Locking
+
+This project uses PostgreSQL and Node.js to safely process migration records with concurrency control.
+
+## Record Locking
+- Each record in the `records` table has a `processing` boolean column.
+- To process a record, the system atomically selects the next available record (where `processing = false`) and sets `processing = true` using a transaction and `SELECT ... FOR UPDATE SKIP LOCKED`.
+- This prevents multiple workers from processing the same record concurrently.
+
+## Unlocking
+- To release a record, set `processing = false` and update any relevant status columns.
+
+## Example Usage
+```js
+const record = await db.getAndLockNextRecord();
+if (record) {
+  // process record
+  // ...
+  // unlock when done
+  await db.unlockRecord(record.id);
+}
+```
+
+## Schema Overview
+- `processing BOOLEAN DEFAULT FALSE` — indicates if a record is currently locked for processing.
+
+## Concurrency Safety
+- All record selection and locking is done within a transaction to ensure atomicity and prevent race conditions.
+
+---
+For further details, see the code in `/app/db/db.js` and the schema in `/app/db/schema.sql`.

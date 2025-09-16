@@ -170,8 +170,9 @@ const getAndLockNextRecord = async () => {
       client.release();
       return null;
     }
+    // Only set processing=true when locking; do not update processing_started if already set
     await client.query(
-      'UPDATE records SET processing_started = NOW(), processing = true WHERE id = $1',
+      'UPDATE records SET processing = true WHERE id = $1',
       [record.id]
     );
     await client.query('COMMIT');
@@ -186,6 +187,25 @@ const getAndLockNextRecord = async () => {
   }
 };
 
+/**
+ * Unlocks a record by setting processing = false
+ * @param {number} id - The record id to unlock
+ * @returns {Promise<boolean>} True if unlock succeeded, false otherwise
+ */
+const unlockRecord = async (id) => {
+  try {
+    if (typeof id !== 'number' || id <= 0) throw new Error('Invalid record id');
+    const res = await pool.query(
+      'UPDATE records SET processing = false WHERE id = $1',
+      [id]
+    );
+    return res.rowCount === 1;
+  } catch (err) {
+    console.error('Failed to unlock record:', err);
+    return false;
+  }
+};
+
 const db = {
   testConnection,
   pool,
@@ -195,6 +215,7 @@ const db = {
   deleteAllRecords,
   getImportCount,
   getAndLockNextRecord,
+  unlockRecord,
 };
 
 export default db;
