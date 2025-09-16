@@ -4,372 +4,585 @@
     "cleaned": "entity_id",
     "count": 4198,
     "example": "2200100",
+    "isUnique": true,
+    "uniqueExamples": [
+      "100820",
+      "100988",
+      "101132",
+      "101708",
+      "101852",
+      "102116",
+      "102956",
+      "103004",
+      "103076",
+      "104660"
+    ],
     "index": true
   },
   {
     "original": "Yext ID",
     "cleaned": "yext_id",
     "count": 4198,
-    "example": "25758553"
+    "example": "25758553",
+    "isUnique": true,
+    "uniqueExamples": [
+      "25757119",
+      "25757120",
+      "25757402",
+      "25757403",
+      "25757404",
+      "25757405",
+      "25757406",
+      "25757407",
+      "25757408",
+      "25757409"
+    ]
   },
   {
     "original": "Name",
     "cleaned": "name",
     "count": 4198,
-    "example": "Abbeville"
+    "example": "Abbeville",
+    "isUnique": true,
+    "uniqueExamples": [
+      "Abbeville",
+      "Abilene",
+      "Abingdon",
+      "Absecon",
+      "Acworth",
+      "Ada",
+      "Addis",
+      "Adelanto",
+      "Adrian",
+      "Agawam Town"
+    ]
   },
   {
     "original": "Main Phone > ISO Country Code",
     "cleaned": "main_phone_iso_country_code",
     "count": 4198,
-    "example": "US"
+    "example": "US",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Main Phone > Phone Number",
     "cleaned": "main_phone_phone_number",
     "count": 4198,
-    "example": "8558379124"
+    "example": "8558379124",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Address > Line 1",
     "cleaned": "address_line_1",
     "count": 4198,
-    "example": "247 North Lamar Street"
-  },
-  {
-    "original": "Address > Line 2",
-    "cleaned": "address_line_2",
-    "count": 4,
-    "example": "Alliance"
-  },
-  {
-    "original": "Address > Sublocality",
-    "cleaned": "address_sublocality",
-    "count": 2,
-    "example": "NE 69301\""
+    "example": "247 North Lamar Street",
+    "isUnique": true,
+    "uniqueExamples": [
+      "247 North Lamar Street",
+      "1348 1st Avenue Southeast",
+      "711 East Wishkah Street",
+      "251 Paradise Road",
+      "105 Taylor St",
+      "1442 North 5th Street",
+      "302 Green Spring Rd",
+      "8 Hillside Circle",
+      "4263 South Lakeshore Drive",
+      "720 East 17th Street"
+    ]
   },
   {
     "original": "Address > City",
     "cleaned": "address_city",
-    "count": 4194,
-    "example": "Abbeville"
+    "count": 4198,
+    "example": "Abbeville",
+    "isUnique": true,
+    "uniqueExamples": [
+      "Abbeville",
+      "Abilene",
+      "Abingdon",
+      "Absecon",
+      "Acworth",
+      "Ada",
+      "Addis",
+      "Adelanto",
+      "Adrian",
+      "Agawam Town"
+    ]
   },
   {
     "original": "Address > Region",
     "cleaned": "address_region",
-    "count": 4196,
-    "example": "LA"
+    "count": 4198,
+    "example": "LA",
+    "isUnique": true,
+    "uniqueExamples": [
+      "HI"
+    ]
   },
   {
     "original": "Address > Postal Code",
     "cleaned": "address_postal_code",
     "count": 4198,
-    "example": "70510"
-  },
-  {
-    "original": "Address > Extra Description",
-    "cleaned": "address_extra_description",
-    "count": 4,
-    "example": "NE"
-  },
-  {
-    "original": "Website URL > URL",
-    "cleaned": "website_url_url",
-    "count": 2,
-    "example": "69301"
+    "example": "70510",
+    "isUnique": true,
+    "uniqueExamples": [
+      "1001",
+      "1020",
+      "1027",
+      "1040",
+      "1062",
+      "1069",
+      "1089",
+      "1109",
+      "1201",
+      "1247"
+    ]
   },
   {
     "original": "Active in Answers",
     "cleaned": "active_in_answers",
-    "count": 4194,
-    "example": "TRUE"
+    "count": 4198,
+    "example": "TRUE",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Answers Keywords",
     "cleaned": "answers_keywords",
-    "count": 24,
-    "example": "Lake Saint Louis"
+    "count": 22,
+    "example": "Lake Saint Louis",
+    "isUnique": true,
+    "uniqueExamples": [
+      "Lake Saint Louis",
+      "North Saint Paul",
+      "South Saint Paul",
+      "Saint Ann",
+      "Saint Anthony",
+      "Saint Charles",
+      "Saint John",
+      "saint john",
+      "saint johns",
+      "saint matthews"
+    ]
   },
   {
     "original": "Location City State",
     "cleaned": "location_city_state",
-    "count": 4196,
-    "example": "\"Abbeville"
+    "count": 4198,
+    "example": "Abbeville, LA",
+    "isUnique": true,
+    "uniqueExamples": [
+      "Abbeville, LA",
+      "Aberdeen, SD",
+      "Aberdeen, WA",
+      "Aberdeen, MD",
+      "Aberdeen, NC",
+      "Abilene, TX",
+      "Abingdon, VA",
+      "Absecon, NJ",
+      "Acworth, GA",
+      "Ada, OK"
+    ]
   },
   {
     "original": "Location State",
     "cleaned": "location_state",
-    "count": 4196,
-    "example": "LA\""
-  },
-  {
-    "original": "Photo > URL",
-    "cleaned": "photo_url",
     "count": 4198,
-    "example": "LA"
+    "example": "LA",
+    "isUnique": true,
+    "uniqueExamples": [
+      "HI"
+    ]
   },
   {
-    "original": "Photo > Alternate Text",
-    "cleaned": "photo_alternate_text",
-    "count": 4,
-    "example": "NE\""
+    "original": "Searchable City",
+    "cleaned": "searchable_city",
+    "count": 4198,
+    "example": "Abbeville",
+    "isUnique": true,
+    "uniqueExamples": [
+      "Abbeville",
+      "Abilene",
+      "Abingdon",
+      "Absecon",
+      "Acworth",
+      "Ada",
+      "Addis",
+      "Adelanto",
+      "Adrian",
+      "Agawam Town"
+    ]
   },
   {
-    "original": "Photo > Description",
-    "cleaned": "photo_description",
-    "count": 2,
-    "example": "NE"
-  },
-  {
-    "original": "Secondary CTA > Label",
-    "cleaned": "secondary_cta_label",
-    "count": 4194,
-    "example": "Abbeville"
-  },
-  {
-    "original": "Secondary CTA > Link Type",
-    "cleaned": "secondary_cta_link_type",
-    "count": 2,
-    "example": "Mount Holly"
-  },
-  {
-    "original": "Secondary CTA > Link",
-    "cleaned": "secondary_cta_link",
-    "count": 2,
-    "example": "Alliance"
+    "original": "Location State Full Name",
+    "cleaned": "location_state_full_name",
+    "count": 4198,
+    "example": "Louisiana",
+    "isUnique": true,
+    "uniqueExamples": [
+      "Hawaii"
+    ]
   },
   {
     "original": "Pages Phone Number",
     "cleaned": "pages_phone_number",
-    "count": 4194,
-    "example": "Louisiana"
+    "count": 4198,
+    "example": "8558379124",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "About CTA > Label",
     "cleaned": "about_cta_label",
-    "count": 4196,
-    "example": "8558379124"
+    "count": 4198,
+    "example": "Browse Equipment",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "About CTA > Link Type",
     "cleaned": "about_cta_link_type",
     "count": 4198,
-    "example": "Browse Equipment"
+    "example": "URL",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "About CTA > Link",
     "cleaned": "about_cta_link",
     "count": 4198,
-    "example": "URL"
+    "example": "https://www.bigrentz.com/equipment-rentals",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Footer Address",
     "cleaned": "footer_address",
     "count": 4198,
-    "example": "https://www.bigrentz.com/equipment-rentals"
+    "example": "Corporate Office",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "List of FAQ > Question",
     "cleaned": "list_of_faq_question",
     "count": 4198,
-    "example": "Corporate Office"
+    "example": "Where is BigRentz located?,Can I pick-up or drop off the equipment myself?,How long is each rental period?,Can I get a delivery tomorrow?,Does BigRentz service my area?",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "List of FAQ > Answer",
     "cleaned": "list_of_faq_answer",
     "count": 4198,
-    "example": "\"Where is BigRentz located?"
+    "example": "BigRentz's call center and corporate headquarters are located in Southern California.,\"No. For your safety, and limitations posed by our insurance policy, our haulers must be used for all equipment deliveries and pick\\-ups.\",One Day Rental = One (1) 8\\-hour shift over a 24 hour period. One Week Rental = Five (5) 8\\-hour shifts over a seven day period. One Month Rental = Twenty (20) 8\\-hour shifts over a 28 day period,\"Yes, in most cases we are able to deliver equipment the next day. Please do keep in mind that early morning delivery times fill up quickly and may not be available.  In some cases, if the equipment is available, and trucks are available, we can deliver the same day. If necessary, an outside hauler may be used, but normal delivery rates do not apply.\",\"Yes. BigRentz.com works with more than 12,000 local suppliers across the United States, so no matter where you are, we have a location nearby to serve you.  Our most popular service areas are New York City, Los Angeles, Chicago and Houston.\"",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "About Geomodifier",
     "cleaned": "about_geomodifier",
     "count": 4198,
-    "example": "Can I pick-up or drop off the equipment myself?"
+    "example": "Abbeville, Vermilion County, LA",
+    "isUnique": true,
+    "uniqueExamples": [
+      "Abbeville, Vermilion County, LA",
+      "Aberdeen, Brown County, SD",
+      "Aberdeen, Grays Harbor County, WA",
+      "Aberdeen, Harford County, MD",
+      "Aberdeen, Moore County, NC",
+      "Abilene, Taylor County, TX",
+      "Abingdon, Washington County, VA",
+      "Absecon, Atlantic County, NJ",
+      "Acworth, Cobb County, GA",
+      "Ada, Pontotoc County, OK"
+    ]
   },
   {
     "original": "Guide List > Title",
     "cleaned": "guide_list_title",
     "count": 4198,
-    "example": "How long is each rental period?"
+    "example": "Boom Lifts,Forklifts,Scissor Lifts,Dumpsters,Cranes,Mini Excavators,Skid Steer Loaders,Backhoe Loaders,Diesel Generators",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Guide List > Description",
     "cleaned": "guide_list_description",
     "count": 4198,
-    "example": "Can I get a delivery tomorrow?"
+    "example": "\"Our boom lift rental guide covers the following topics: Do You Need a Boom Lift or a Scissor Lift?, Boom Lift Uses, 7 Types of Construction Lifts and Boom Lifts, How to Choose the Right Telescopic Boom Lift, Boom Lift Safety, Boom Lift Hazards.\",\"Our forklift rental guide covers the following topics: How Does a Forklift Work?, Elements of a Forklift, Types of Forklifts, How to Choose a Forklift, How to Choose Forklift Attachments, Why You Should Rent a Forklift, Common Forklift Hazards.\",\"Our scissor lift rental guide covers the following topics: Do You Need a Boom Lift or a Scissor Lift?, How Does a Scissor Lift Work?, 5 Types of Scissor Lifts, Figuring Out Which Scissor Lift You Need, Why You Should Rent?, Essential Scissor Lift Safety Tips.\",\"Our dumpster rental guide covers the following topics: Types of Dumpsters, Construction Dumpster Sizes, How To Choose a Dumpster Size, Cost to Rent a Dumpster, Why You Should Rent a Dumpster, What Can You Put in a Dumpster?, Building a Dumpster Enclosure.\",\"Our crane rental guide covers the following topics: How Do Cranes Work?, Types of Cranes, How to Choose a Crane, Why You Should Rent a Crane, Crane Safety Tips, Crane Hand Signals.\",\"Our mini excavator rental guide covers the following topics: Mini Excavator Basics, Parts of a Mini Excavator, Mini Excavator Sizes, How to Pick a Mini Excavator, How to Operate a Mini Excavator, Mini Excavator Alternatives.\",\"Our skid steer rental guide covers the following topics: Skid Steer Basics, Skid Steer Sizes, How To Pick a Skid Steer, How To Operate a Skid Steer, Skid Steer Alternatives, Skid Steer Rental Costs.\",\"Our backhoe rental guide covers the following topics: Backhoe Basics, Parts of a Backhoe, Backhoe Attachments, How to Operate a Backhoe, Safety Tips for Operating a Backhoe, How to Pick a Backhoe, Backhoe Alternatives, Frequently Asked Questions.\",\"Our generator rental guide covers the following topics: Generator Basics, How Does a Generator Work?, Types of Generators and Their Uses, How to Choose a Generator, Ampere Conversion Chart, Diesel Fuel Consumption Chart, Generator Maintenance, Generator Rental Costs, FAQ.\"",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Guide List > CTA > Label",
     "cleaned": "guide_list_cta_label",
     "count": 4198,
-    "example": "Does BigRentz service my area?\""
+    "example": "Download the Boom Lift Rental Guide,Download the Forklift Rental Guide,Download the Scissor Lift Rental Guide,Download the Dumpster Rental Guide,Download the Crane Rental Guide,Download the Mini Excavator Rental Guide,Download the Skid Steer Rental Guide,Download the Backhoe Rental Guide,Download the Generator Rental Guide",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Guide List > CTA > Link Type",
     "cleaned": "guide_list_cta_link_type",
     "count": 4198,
-    "example": "\"BigRentz's call center and corporate headquarters are located in Southern California."
+    "example": "URL,URL,URL,URL,URL,URL,URL,URL,URL",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Guide List > CTA > Link",
     "cleaned": "guide_list_cta_link",
     "count": 4198,
-    "example": "\"\"No. For your safety"
+    "example": "https://www.bigrentz.com/boom-lift-rental-guide-ebook,https://www.bigrentz.com/forklift-rental-guide-ebook,https://www.bigrentz.com/scissor-lift-rental-guide-ebook,https://www.bigrentz.com/dumpster-rental-guide-ebook,https://www.bigrentz.com/crane-rental-guide-ebook,https://www.bigrentz.com/mini-excavator-rental-guide-ebook,https://www.bigrentz.com/skid-steer-rental-guide-ebook,https://www.bigrentz.com/backhoe-rental-guide-ebook,https://www.bigrentz.com/generator-rental-guide-ebook",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Rental Partner Label",
     "cleaned": "rental_partner_label",
     "count": 4198,
-    "example": "and limitations posed by our insurance policy"
+    "example": "locations near",
+    "isUnique": false,
+    "uniqueExamples": []
   },
   {
     "original": "Page Meta Title",
     "cleaned": "page_meta_title",
     "count": 4198,
-    "example": "our haulers must be used for all equipment deliveries and pick\\-ups.\"\""
+    "example": "Construction Equipment Rental in Abbeville, LA | BigRentz",
+    "isUnique": true,
+    "uniqueExamples": [
+      "Construction Equipment Rental in Abbeville, LA | BigRentz",
+      "Construction Equipment Rental in Aberdeen, SD | BigRentz",
+      "Construction Equipment Rental in Aberdeen, WA | BigRentz",
+      "Construction Equipment Rental in Aberdeen, MD | BigRentz",
+      "Construction Equipment Rental in Aberdeen, NC | BigRentz",
+      "Construction Equipment Rental in Abilene, TX | BigRentz",
+      "Construction Equipment Rental in Abingdon, VA | BigRentz",
+      "Construction Equipment Rental in Absecon, NJ | BigRentz",
+      "Construction Equipment Rental in Acworth, GA | BigRentz",
+      "Construction Equipment Rental in Ada, OK | BigRentz"
+    ]
   },
   {
     "original": "City Lat/Long > Latitude",
     "cleaned": "city_lat_long_latitude",
-    "count": 4198,
-    "example": "One Day Rental = One (1) 8\\-hour shift over a 24 hour period. One Week Rental = Five (5) 8\\-hour shifts over a seven day period. One Month Rental = Twenty (20) 8\\-hour shifts over a 28 day period"
+    "count": 4179,
+    "example": "29.972623",
+    "isUnique": true,
+    "uniqueExamples": [
+      "29.972623",
+      "45.459181",
+      "47.002735",
+      "39.499909",
+      "35.203802",
+      "32.450859",
+      "36.711643",
+      "39.425329",
+      "34.060116",
+      "34.775596"
+    ]
   },
   {
     "original": "City Lat/Long > Longitude",
     "cleaned": "city_lat_long_longitude",
-    "count": 4198,
-    "example": "\"\"Yes"
+    "count": 4179,
+    "example": "-92.126732",
+    "isUnique": true,
+    "uniqueExamples": [
+      "-92.126732",
+      "-98.468843",
+      "-123.67129",
+      "-76.231177",
+      "-79.517795",
+      "-99.76395",
+      "-81.971872",
+      "-74.498341",
+      "-84.665077",
+      "-96.665253"
+    ]
   },
   {
     "original": "Geocoded Lat/Long > Latitude",
     "cleaned": "geocoded_lat_long_latitude",
-    "count": 4198,
-    "example": "in most cases we are able to deliver equipment the next day. Please do keep in mind that early morning delivery times fill up quickly and may not be available.  In some cases"
+    "count": 3851,
+    "example": "29.9746999",
+    "isUnique": true,
+    "uniqueExamples": [
+      "29.9746999",
+      "45.4639334",
+      "46.976756",
+      "39.516025",
+      "35.134614",
+      "32.4542521",
+      "36.70917",
+      "39.422655",
+      "34.0591802",
+      "34.768432"
+    ]
   },
   {
     "original": "Geocoded Lat/Long > Longitude",
     "cleaned": "geocoded_lat_long_longitude",
-    "count": 4198,
-    "example": "if the equipment is available"
+    "count": 3851,
+    "example": "-92.1265",
+    "isUnique": true,
+    "uniqueExamples": [
+      "-92.1265",
+      "-98.4681877",
+      "-123.809555",
+      "-76.171208",
+      "-79.435987",
+      "-99.7380219",
+      "-81.971102",
+      "-74.491775",
+      "-84.6710992",
+      "-96.66911"
+    ]
   },
   {
     "original": "Yext Display Lat/Long > Latitude",
     "cleaned": "yext_display_lat_long_latitude",
     "count": 4198,
-    "example": "and trucks are available"
+    "example": "29.9744",
+    "isUnique": true,
+    "uniqueExamples": [
+      "29.9744",
+      "45.46468",
+      "46.97668",
+      "39.51586",
+      "35.13452",
+      "32.45451",
+      "36.70922",
+      "39.42356",
+      "34.76843",
+      "30.3714557"
+    ]
   },
   {
     "original": "Yext Display Lat/Long > Longitude",
     "cleaned": "yext_display_lat_long_longitude",
     "count": 4198,
-    "example": "we can deliver the same day. If necessary"
-  },
-  {
-    "original": "Yext Dropoff Lat/Long > Latitude",
-    "cleaned": "yext_dropoff_lat_long_latitude",
-    "count": 4198,
-    "example": "an outside hauler may be used"
-  },
-  {
-    "original": "Yext Dropoff Lat/Long > Longitude",
-    "cleaned": "yext_dropoff_lat_long_longitude",
-    "count": 4198,
-    "example": "but normal delivery rates do not apply.\"\""
-  },
-  {
-    "original": "Yext Pickup Lat/Long > Latitude",
-    "cleaned": "yext_pickup_lat_long_latitude",
-    "count": 4198,
-    "example": "\"\"Yes. BigRentz.com works with more than 12"
-  },
-  {
-    "original": "Yext Pickup Lat/Long > Longitude",
-    "cleaned": "yext_pickup_lat_long_longitude",
-    "count": 4198,
-    "example": "000 local suppliers across the United States"
+    "example": "-92.1268",
+    "isUnique": true,
+    "uniqueExamples": [
+      "-92.1268",
+      "-98.4681",
+      "-123.81",
+      "-76.1702",
+      "-79.4356",
+      "-99.7381",
+      "-81.9709",
+      "-74.493",
+      "-84.6716",
+      "-96.6691"
+    ]
   },
   {
     "original": "Yext Routable Lat/Long > Latitude",
     "cleaned": "yext_routable_lat_long_latitude",
-    "count": 4198,
-    "example": "so no matter where you are"
+    "count": 4096,
+    "example": "29.9744",
+    "isUnique": true,
+    "uniqueExamples": [
+      "29.9744",
+      "45.4642188",
+      "46.9771938",
+      "39.5158378",
+      "35.135409",
+      "32.4538806",
+      "36.709238",
+      "39.422536",
+      "34.0586268",
+      "34.7680574"
+    ]
   },
   {
     "original": "Yext Routable Lat/Long > Longitude",
     "cleaned": "yext_routable_lat_long_longitude",
-    "count": 4198,
-    "example": "we have a location nearby to serve you.  Our most popular service areas are New York City"
-  },
-  {
-    "original": "Yext Walkable Lat/Long > Latitude",
-    "cleaned": "yext_walkable_lat_long_latitude",
-    "count": 4198,
-    "example": "Los Angeles"
-  },
-  {
-    "original": "Yext Walkable Lat/Long > Longitude",
-    "cleaned": "yext_walkable_lat_long_longitude",
-    "count": 4198,
-    "example": "Chicago and Houston.\"\"\""
+    "count": 4096,
+    "example": "-92.1268",
+    "isUnique": true,
+    "uniqueExamples": [
+      "-92.1268",
+      "-98.4672489",
+      "-123.8095887",
+      "-76.1716092",
+      "-79.43647",
+      "-99.737136",
+      "-81.9713019",
+      "-74.491783",
+      "-84.6712791",
+      "-96.6554344"
+    ]
   },
   {
     "original": "Display Lat/Long > Latitude",
     "cleaned": "display_lat_long_latitude",
-    "count": 4198,
-    "example": "\"Abbeville"
+    "count": 3805,
+    "example": "29.9744",
+    "isUnique": true,
+    "uniqueExamples": [
+      "29.9744",
+      "45.46468",
+      "46.97668",
+      "39.51586",
+      "35.13452",
+      "32.45451",
+      "36.70922",
+      "39.42356",
+      "34.76843",
+      "30.36954"
+    ]
   },
   {
     "original": "Display Lat/Long > Longitude",
     "cleaned": "display_lat_long_longitude",
-    "count": 4198,
-    "example": "Vermilion County"
-  },
-  {
-    "original": "Dropoff Lat/Long > Latitude",
-    "cleaned": "dropoff_lat_long_latitude",
-    "count": 4198,
-    "example": "LA\""
-  },
-  {
-    "original": "Dropoff Lat/Long > Longitude",
-    "cleaned": "dropoff_lat_long_longitude",
-    "count": 4198,
-    "example": "\"Boom Lifts"
-  },
-  {
-    "original": "Pickup Lat/Long > Latitude",
-    "cleaned": "pickup_lat_long_latitude",
-    "count": 4198,
-    "example": "Forklifts"
-  },
-  {
-    "original": "Pickup Lat/Long > Longitude",
-    "cleaned": "pickup_lat_long_longitude",
-    "count": 4198,
-    "example": "Scissor Lifts"
+    "count": 3805,
+    "example": "-92.1268",
+    "isUnique": true,
+    "uniqueExamples": [
+      "-92.1268",
+      "-98.4681",
+      "-123.81",
+      "-76.1702",
+      "-79.4356",
+      "-99.7381",
+      "-81.9709",
+      "-74.493",
+      "-84.6716",
+      "-96.6691"
+    ]
   },
   {
     "original": "Routable Lat/Long > Latitude",
     "cleaned": "routable_lat_long_latitude",
-    "count": 4198,
-    "example": "Dumpsters"
+    "count": 5,
+    "example": "29.9744",
+    "isUnique": true,
+    "uniqueExamples": [
+      "29.9744",
+      "34.7680574",
+      "41.081026",
+      "37.4752624",
+      "40.66347"
+    ]
   },
   {
     "original": "Routable Lat/Long > Longitude",
     "cleaned": "routable_lat_long_longitude",
-    "count": 4198,
-    "example": "Cranes"
-  },
-  {
-    "original": "Walkable Lat/Long > Latitude",
-    "cleaned": "walkable_lat_long_latitude",
-    "count": 4198,
-    "example": "Mini Excavators"
-  },
-  {
-    "original": "Walkable Lat/Long > Longitude",
-    "cleaned": "walkable_lat_long_longitude",
-    "count": 4198,
-    "example": "Skid Steer Loaders"
+    "count": 5,
+    "example": "-92.1268",
+    "isUnique": true,
+    "uniqueExamples": [
+      "-92.1268",
+      "-96.6554344",
+      "-81.5216917",
+      "-105.8779354",
+      "-73.9387"
+    ]
   }
 ]

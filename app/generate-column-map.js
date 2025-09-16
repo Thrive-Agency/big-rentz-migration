@@ -3,7 +3,9 @@ import ScriptTimer from './utils/ScriptTimer.js';
 import colors from './utils/colors.js';
 import fs from 'fs';
 import getSingleCsvFile from './utils/getSingleCsvFile.js';
+
 import { findDuplicates } from './utils/csvUtils.js';
+import { parse } from 'csv-parse/sync';
 
 function cleanHeader(header) {
   return header
@@ -95,42 +97,46 @@ function processMapping() {
   try {
     try {
       const data = fs.readFileSync(fileArg, 'utf8');
-      const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
-      const headers = lines[0].split(',').map(h => h.trim());
-      const rowCount = lines.length - 1;
-      const counts = headers.map((_, idx) => {
-        let count = 0;
-        for (let i = 1; i < lines.length; i++) {
-          const cols = lines[i].split(',');
-          if (cols[idx] && cols[idx].trim() !== '') count++;
-        }
-        return count;
+      let records;
+      try {
+        records = parse(data, { columns: true, skip_empty_lines: true });
+      } catch (err) {
+        console.error('Error parsing CSV:', err);
+        timer.end();
+        process.exit(1);
+      }
+      const headers = Object.keys(records[0] || {});
+      const rowCount = records.length;
+      const counts = headers.map(h => records.filter(r => r[h] && r[h].trim() !== '').length);
+      const examples = headers.map(h => {
+        const ex = records.find(r => r[h] && r[h].trim() !== '');
+        return ex ? ex[h].trim() : null;
       });
-
-      // Find example value for each column
-      const examples = headers.map((_, idx) => {
-        for (let i = 1; i < lines.length; i++) {
-          const cols = lines[i].split(',');
-          if (cols[idx] && cols[idx].trim() !== '') return cols[idx].trim();
-        }
-        return null;
+      const uniqueInfoArr = headers.map(h => {
+        const valueCount = {};
+        records.forEach(r => {
+          const val = r[h] && r[h].trim();
+          if (val) valueCount[val] = (valueCount[val] || 0) + 1;
+        });
+        const uniqueValues = Object.keys(valueCount).filter(v => valueCount[v] === 1);
+        return {
+          isUnique: uniqueValues.length > 0,
+          uniqueExamples: uniqueValues.slice(0, 10)
+        };
       });
-
-      // Only include headers with count > 0, and add example
       const map = headers
         .map((h, i) => ({
           original: h,
           cleaned: cleanHeader(h),
           count: counts[i],
-          example: examples[i]
+          example: examples[i],
+          isUnique: uniqueInfoArr[i].isUnique,
+          uniqueExamples: uniqueInfoArr[i].isUnique ? uniqueInfoArr[i].uniqueExamples : []
         }))
         .filter(entry => entry.count > 0);
-
-      // Ensure the first element is flagged as index
       if (map.length > 0) {
         map[0].index = true;
       }
-
       // Check for duplicate cleaned keys
       const cleanedNames = map.map(entry => entry.cleaned);
       const duplicates = findDuplicates(cleanedNames);
@@ -139,10 +145,11 @@ function processMapping() {
         duplicates.forEach(name => console.log(`${colors.red} - ${name}${colors.reset}`));
         console.log('Please edit the mapping file to resolve duplicates before proceeding.');
       }
-
       fs.writeFileSync(outArg, JSON.stringify(map, null, 2));
       console.log(`\n${colors.green}Column map with ${rowCount} written to ${outArg}${colors.reset}`);
       console.log('Edit this file to remove unused columns or update cleaned names as needed.');
+      timer.end();
+      process.exit(0);
     } catch (err) {
       console.error('Error generating column map:', err);
     }
