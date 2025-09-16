@@ -33,6 +33,6 @@ export const config = {
   // Certificate settings
   ALLOW_SELF_SIGNED_CERTS:
     MODE === 'development'
-      ? process.env.ALLOW_SELF_SIGNED_CERTS === 'true'
+      ? 'true'
       : false,
 };
