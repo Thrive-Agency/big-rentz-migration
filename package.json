@@ -8,7 +8,9 @@
     "init-db": "node ./app/db/init-db.js",
     "show-schema": "node ./app/db/show-schema.js",
     "generate-column-map": "node ./app/generate-column-map.js",
-    "check-csv-headers": "node ./app/import-csv.js -check-headers"
+    "check-csv-headers": "node ./app/check-csv.js -check-headers",
+    "load-records": "node ./app/import-csv-to-db.js",
+    "reset-db": "node app/reset-db.js"
   },
   "repository": {
     "type": "git",
