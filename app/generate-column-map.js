@@ -106,10 +106,26 @@ function processMapping() {
         }
         return count;
       });
-      // Only include headers with count > 0
+
+      // Find example value for each column
+      const examples = headers.map((_, idx) => {
+        for (let i = 1; i < lines.length; i++) {
+          const cols = lines[i].split(',');
+          if (cols[idx] && cols[idx].trim() !== '') return cols[idx].trim();
+        }
+        return null;
+      });
+
+      // Only include headers with count > 0, and add example
       const map = headers
-        .map((h, i) => ({ original: h, cleaned: cleanHeader(h), count: counts[i] }))
+        .map((h, i) => ({
+          original: h,
+          cleaned: cleanHeader(h),
+          count: counts[i],
+          example: examples[i]
+        }))
         .filter(entry => entry.count > 0);
+
       // Ensure the first element is flagged as index
       if (map.length > 0) {
         map[0].index = true;

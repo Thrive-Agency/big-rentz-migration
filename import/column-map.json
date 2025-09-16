@@ -3,311 +3,373 @@
     "original": "Entity ID",
     "cleaned": "entity_id",
     "count": 4198,
+    "example": "2200100",
     "index": true
   },
   {
     "original": "Yext ID",
     "cleaned": "yext_id",
-    "count": 4198
+    "count": 4198,
+    "example": "25758553"
   },
   {
     "original": "Name",
     "cleaned": "name",
-    "count": 4198
+    "count": 4198,
+    "example": "Abbeville"
   },
   {
     "original": "Main Phone > ISO Country Code",
     "cleaned": "main_phone_iso_country_code",
-    "count": 4198
+    "count": 4198,
+    "example": "US"
   },
   {
     "original": "Main Phone > Phone Number",
     "cleaned": "main_phone_phone_number",
-    "count": 4198
+    "count": 4198,
+    "example": "8558379124"
   },
   {
     "original": "Address > Line 1",
     "cleaned": "address_line_1",
-    "count": 4198
+    "count": 4198,
+    "example": "247 North Lamar Street"
   },
   {
     "original": "Address > Line 2",
     "cleaned": "address_line_2",
-    "count": 4
+    "count": 4,
+    "example": "Alliance"
   },
   {
     "original": "Address > Sublocality",
     "cleaned": "address_sublocality",
-    "count": 2
+    "count": 2,
+    "example": "NE 69301\""
   },
   {
     "original": "Address > City",
     "cleaned": "address_city",
-    "count": 4194
+    "count": 4194,
+    "example": "Abbeville"
   },
   {
     "original": "Address > Region",
     "cleaned": "address_region",
-    "count": 4196
+    "count": 4196,
+    "example": "LA"
   },
   {
     "original": "Address > Postal Code",
     "cleaned": "address_postal_code",
-    "count": 4198
+    "count": 4198,
+    "example": "70510"
   },
   {
     "original": "Address > Extra Description",
     "cleaned": "address_extra_description",
-    "count": 4
+    "count": 4,
+    "example": "NE"
   },
   {
     "original": "Website URL > URL",
     "cleaned": "website_url_url",
-    "count": 2
+    "count": 2,
+    "example": "69301"
   },
   {
     "original": "Active in Answers",
     "cleaned": "active_in_answers",
-    "count": 4194
+    "count": 4194,
+    "example": "TRUE"
   },
   {
     "original": "Answers Keywords",
     "cleaned": "answers_keywords",
-    "count": 24
+    "count": 24,
+    "example": "Lake Saint Louis"
   },
   {
     "original": "Location City State",
     "cleaned": "location_city_state",
-    "count": 4196
+    "count": 4196,
+    "example": "\"Abbeville"
   },
   {
     "original": "Location State",
     "cleaned": "location_state",
-    "count": 4196
+    "count": 4196,
+    "example": "LA\""
   },
   {
     "original": "Photo > URL",
     "cleaned": "photo_url",
-    "count": 4198
+    "count": 4198,
+    "example": "LA"
   },
   {
     "original": "Photo > Alternate Text",
     "cleaned": "photo_alternate_text",
-    "count": 4
+    "count": 4,
+    "example": "NE\""
   },
   {
     "original": "Photo > Description",
     "cleaned": "photo_description",
-    "count": 2
+    "count": 2,
+    "example": "NE"
   },
   {
     "original": "Secondary CTA > Label",
     "cleaned": "secondary_cta_label",
-    "count": 4194
+    "count": 4194,
+    "example": "Abbeville"
   },
   {
     "original": "Secondary CTA > Link Type",
     "cleaned": "secondary_cta_link_type",
-    "count": 2
+    "count": 2,
+    "example": "Mount Holly"
   },
   {
     "original": "Secondary CTA > Link",
     "cleaned": "secondary_cta_link",
-    "count": 2
+    "count": 2,
+    "example": "Alliance"
   },
   {
     "original": "Pages Phone Number",
     "cleaned": "pages_phone_number",
-    "count": 4194
+    "count": 4194,
+    "example": "Louisiana"
   },
   {
     "original": "About CTA > Label",
     "cleaned": "about_cta_label",
-    "count": 4196
+    "count": 4196,
+    "example": "8558379124"
   },
   {
     "original": "About CTA > Link Type",
     "cleaned": "about_cta_link_type",
-    "count": 4198
+    "count": 4198,
+    "example": "Browse Equipment"
   },
   {
     "original": "About CTA > Link",
     "cleaned": "about_cta_link",
-    "count": 4198
+    "count": 4198,
+    "example": "URL"
   },
   {
     "original": "Footer Address",
     "cleaned": "footer_address",
-    "count": 4198
+    "count": 4198,
+    "example": "https://www.bigrentz.com/equipment-rentals"
   },
   {
     "original": "List of FAQ > Question",
     "cleaned": "list_of_faq_question",
-    "count": 4198
+    "count": 4198,
+    "example": "Corporate Office"
   },
   {
     "original": "List of FAQ > Answer",
     "cleaned": "list_of_faq_answer",
-    "count": 4198
+    "count": 4198,
+    "example": "\"Where is BigRentz located?"
   },
   {
     "original": "About Geomodifier",
     "cleaned": "about_geomodifier",
-    "count": 4198
+    "count": 4198,
+    "example": "Can I pick-up or drop off the equipment myself?"
   },
   {
     "original": "Guide List > Title",
     "cleaned": "guide_list_title",
-    "count": 4198
+    "count": 4198,
+    "example": "How long is each rental period?"
   },
   {
     "original": "Guide List > Description",
     "cleaned": "guide_list_description",
-    "count": 4198
+    "count": 4198,
+    "example": "Can I get a delivery tomorrow?"
   },
   {
     "original": "Guide List > CTA > Label",
     "cleaned": "guide_list_cta_label",
-    "count": 4198
+    "count": 4198,
+    "example": "Does BigRentz service my area?\""
   },
   {
     "original": "Guide List > CTA > Link Type",
     "cleaned": "guide_list_cta_link_type",
-    "count": 4198
+    "count": 4198,
+    "example": "\"BigRentz's call center and corporate headquarters are located in Southern California."
   },
   {
     "original": "Guide List > CTA > Link",
     "cleaned": "guide_list_cta_link",
-    "count": 4198
+    "count": 4198,
+    "example": "\"\"No. For your safety"
   },
   {
     "original": "Rental Partner Label",
     "cleaned": "rental_partner_label",
-    "count": 4198
+    "count": 4198,
+    "example": "and limitations posed by our insurance policy"
   },
   {
     "original": "Page Meta Title",
     "cleaned": "page_meta_title",
-    "count": 4198
+    "count": 4198,
+    "example": "our haulers must be used for all equipment deliveries and pick\\-ups.\"\""
   },
   {
     "original": "City Lat/Long > Latitude",
     "cleaned": "city_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "One Day Rental = One (1) 8\\-hour shift over a 24 hour period. One Week Rental = Five (5) 8\\-hour shifts over a seven day period. One Month Rental = Twenty (20) 8\\-hour shifts over a 28 day period"
   },
   {
     "original": "City Lat/Long > Longitude",
     "cleaned": "city_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "\"\"Yes"
   },
   {
     "original": "Geocoded Lat/Long > Latitude",
     "cleaned": "geocoded_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "in most cases we are able to deliver equipment the next day. Please do keep in mind that early morning delivery times fill up quickly and may not be available.  In some cases"
   },
   {
     "original": "Geocoded Lat/Long > Longitude",
     "cleaned": "geocoded_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "if the equipment is available"
   },
   {
     "original": "Yext Display Lat/Long > Latitude",
     "cleaned": "yext_display_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "and trucks are available"
   },
   {
     "original": "Yext Display Lat/Long > Longitude",
     "cleaned": "yext_display_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "we can deliver the same day. If necessary"
   },
   {
     "original": "Yext Dropoff Lat/Long > Latitude",
     "cleaned": "yext_dropoff_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "an outside hauler may be used"
   },
   {
     "original": "Yext Dropoff Lat/Long > Longitude",
     "cleaned": "yext_dropoff_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "but normal delivery rates do not apply.\"\""
   },
   {
     "original": "Yext Pickup Lat/Long > Latitude",
     "cleaned": "yext_pickup_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "\"\"Yes. BigRentz.com works with more than 12"
   },
   {
     "original": "Yext Pickup Lat/Long > Longitude",
     "cleaned": "yext_pickup_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "000 local suppliers across the United States"
   },
   {
     "original": "Yext Routable Lat/Long > Latitude",
     "cleaned": "yext_routable_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "so no matter where you are"
   },
   {
     "original": "Yext Routable Lat/Long > Longitude",
     "cleaned": "yext_routable_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "we have a location nearby to serve you.  Our most popular service areas are New York City"
   },
   {
     "original": "Yext Walkable Lat/Long > Latitude",
     "cleaned": "yext_walkable_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "Los Angeles"
   },
   {
     "original": "Yext Walkable Lat/Long > Longitude",
     "cleaned": "yext_walkable_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "Chicago and Houston.\"\"\""
   },
   {
     "original": "Display Lat/Long > Latitude",
     "cleaned": "display_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "\"Abbeville"
   },
   {
     "original": "Display Lat/Long > Longitude",
     "cleaned": "display_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "Vermilion County"
   },
   {
     "original": "Dropoff Lat/Long > Latitude",
     "cleaned": "dropoff_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "LA\""
   },
   {
     "original": "Dropoff Lat/Long > Longitude",
     "cleaned": "dropoff_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "\"Boom Lifts"
   },
   {
     "original": "Pickup Lat/Long > Latitude",
     "cleaned": "pickup_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "Forklifts"
   },
   {
     "original": "Pickup Lat/Long > Longitude",
     "cleaned": "pickup_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "Scissor Lifts"
   },
   {
     "original": "Routable Lat/Long > Latitude",
     "cleaned": "routable_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "Dumpsters"
   },
   {
     "original": "Routable Lat/Long > Longitude",
     "cleaned": "routable_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "Cranes"
   },
   {
     "original": "Walkable Lat/Long > Latitude",
     "cleaned": "walkable_lat_long_latitude",
-    "count": 4198
+    "count": 4198,
+    "example": "Mini Excavators"
   },
   {
     "original": "Walkable Lat/Long > Longitude",
     "cleaned": "walkable_lat_long_longitude",
-    "count": 4198
+    "count": 4198,
+    "example": "Skid Steer Loaders"
   }
 ]
