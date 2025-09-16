@@ -115,3 +115,4 @@ if (imported !== totalRows) {
   console.log(colors.red + `Mismatch: Not all rows were imported.` + colors.reset);
 }
 timer.end();
+process.exit(failed > 0 ? 1 : 0);
