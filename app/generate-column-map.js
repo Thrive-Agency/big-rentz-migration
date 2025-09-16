@@ -3,6 +3,7 @@ import ScriptTimer from './utils/ScriptTimer.js';
 import colors from './utils/colors.js';
 import fs from 'fs';
 import getSingleCsvFile from './utils/getSingleCsvFile.js';
+import { findDuplicates } from './utils/csvUtils.js';
 
 function cleanHeader(header) {
   return header
@@ -109,8 +110,22 @@ function processMapping() {
       const map = headers
         .map((h, i) => ({ original: h, cleaned: cleanHeader(h), count: counts[i] }))
         .filter(entry => entry.count > 0);
+      // Ensure the first element is flagged as index
+      if (map.length > 0) {
+        map[0].index = true;
+      }
+
+      // Check for duplicate cleaned keys
+      const cleanedNames = map.map(entry => entry.cleaned);
+      const duplicates = findDuplicates(cleanedNames);
+      if (duplicates.length > 0) {
+        console.log(`${colors.red}Warning: Duplicate cleaned column names found!${colors.reset}`);
+        duplicates.forEach(name => console.log(`${colors.red} - ${name}${colors.reset}`));
+        console.log('Please edit the mapping file to resolve duplicates before proceeding.');
+      }
+
       fs.writeFileSync(outArg, JSON.stringify(map, null, 2));
-      console.log(`\nColumn map written to ${outArg}`);
+      console.log(`\n${colors.green}Column map with ${rowCount} written to ${outArg}${colors.reset}`);
       console.log('Edit this file to remove unused columns or update cleaned names as needed.');
     } catch (err) {
       console.error('Error generating column map:', err);

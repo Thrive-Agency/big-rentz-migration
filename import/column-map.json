@@ -2,7 +2,8 @@
   {
     "original": "Entity ID",
     "cleaned": "entity_id",
-    "count": 4198
+    "count": 4198,
+    "index": true
   },
   {
     "original": "Yext ID",
