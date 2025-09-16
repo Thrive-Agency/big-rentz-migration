@@ -16,7 +16,11 @@ const wpAxios = axios.create({
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
-    ...(config.WP_API_PASS ? { 'Authorization': `Bearer ${config.WP_API_PASS}` } : {}),
+    ...(config.WP_ADMIN_USER && config.WP_API_PASS ? {
+      'Authorization': 'Basic ' + Buffer.from(
+        `${config.WP_ADMIN_USER.replace(/"/g, '')}:${config.WP_API_PASS.replace(/"/g, '')}`
+      ).toString('base64')
+    } : {}),
   },
   httpsAgent: agent,
 });
