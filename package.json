@@ -11,7 +11,8 @@
     "check-csv-headers": "node ./app/check-csv.js -check-headers",
     "load-records": "node ./app/import-csv-to-db.js",
     "reset-db": "node app/reset-db.js",
-    "test-wp-api": "node app/services/test-wp-api.js"
+    "test-wp-api": "node app/services/test-wp-api.js",
+    "start": "node app/index.js"
   },
   "repository": {
     "type": "git",

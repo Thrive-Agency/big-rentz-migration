@@ -1,43 +1,36 @@
-import {
-  getPostsByType,
-  getPostByType,
-  createPostByType,
-  getTaxonomyTerms
-} from './services/wordpress.js';
+import { createPostByType } from './services/wordpress.js';
 import db from './db/db.js';
 
-// Example usage: Fetch and log all rental locations
 (async () => {
   try {
-    // Print first row's data column from the database using db controller
-    const firstRecord = await db.getFirstRecord();
-    if (firstRecord) {
-      console.log('First row data column:', firstRecord.data);
-    } else {
-      console.log('No rows found in records table.');
+    // Get and lock the next available record
+    const record = await db.getAndLockNextRecord();
+    if (!record) {
+      console.log('No available records to process.');
+      return;
     }
-
-    const locations = await getPostsByType('rental-locations');
-    console.log('Rental Locations:', locations);
-    // Fetch all state taxonomy terms once
-    const stateTerms = await getTaxonomyTerms('state');
-    // Log ACF fields and state taxonomy for each location
-    locations.forEach(loc => {
-      if (loc.acf) {
-        console.log(`ACF fields for location ${loc.id}:`, loc.acf);
-      } else {
-        console.log(`No ACF fields for location ${loc.id}`);
+    // Use dummy data for post creation test
+    const dummyData = {
+      title: 'Test Rental Location',
+      acf: {
+        latitude: '34.000000',
+        longitude: '-118.000000',
+        raw_latitude: '34.000123',
+        raw_longitude: '-118.000456',
+        address_line_1: '123 Main St',
+        address_line_2: 'Suite 100',
+        address_sub_local: 'Downtown',
+        postal_code: '12345',
+        friendly_location_full_name: 'Testville, TS 12345'
+      },
+      taxonomies: {
+        state: ['test-state']
       }
-      if (loc.state) {
-        // loc.state is an array of term IDs
-        const terms = Array.isArray(loc.state) ? loc.state : [loc.state];
-        const termDetails = terms.map(termId => stateTerms.find(t => t.id === termId));
-        console.log(`State taxonomy for location ${loc.id}:`, termDetails);
-      } else {
-        console.log(`No state taxonomy for location ${loc.id}`);
-      }
-    });
+    };
+    const result = await createPostByType('rental-locations', dummyData);
+    console.log('Create post result:', result);
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error creating post:', error);
   }
+  process.exit(0);
 })();
