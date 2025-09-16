@@ -139,7 +139,7 @@ function processMapping() {
             mapped: true,
             fieldId: "",
             slug: "",
-            type: ""
+            handler: ""
           }
         }))
         .filter(entry => entry.count > 0);

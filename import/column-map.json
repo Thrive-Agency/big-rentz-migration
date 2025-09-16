@@ -22,7 +22,7 @@
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -43,12 +43,11 @@
       "25757408",
       "25757409"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -69,12 +68,11 @@
       "Adrian",
       "Agawam Town"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -95,12 +93,11 @@
       "4263 South Lakeshore Drive",
       "720 East 17th Street"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -121,12 +118,11 @@
       "1201",
       "1247"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -138,12 +134,11 @@
     "uniqueExamples": [
       "HI"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -155,12 +150,11 @@
     "uniqueExamples": [
       "Hawaii"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -181,12 +175,11 @@
       "Acworth, Cobb County, GA",
       "Ada, Pontotoc County, OK"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -207,12 +200,11 @@
       "Construction Equipment Rental in Acworth, GA | BigRentz",
       "Construction Equipment Rental in Ada, OK | BigRentz"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -233,12 +225,11 @@
       "34.060116",
       "34.775596"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -259,12 +250,11 @@
       "-84.665077",
       "-96.665253"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -285,12 +275,11 @@
       "34.0591802",
       "34.768432"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   },
   {
@@ -311,12 +300,11 @@
       "-84.6710992",
       "-96.66911"
     ],
-    "index": true,
     "wpMap": {
       "mapped": true,
       "fieldId": "",
       "slug": "",
-      "type": ""
+      "handler": ""
     }
   }
 ]
