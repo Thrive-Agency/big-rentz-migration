@@ -17,7 +17,13 @@
       "103076",
       "104660"
     ],
-    "index": true
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "Yext ID",
@@ -36,7 +42,14 @@
       "25757407",
       "25757408",
       "25757409"
-    ]
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "Name",
@@ -55,23 +68,14 @@
       "Adelanto",
       "Adrian",
       "Agawam Town"
-    ]
-  },
-  {
-    "original": "Main Phone > ISO Country Code",
-    "cleaned": "main_phone_iso_country_code",
-    "count": 4198,
-    "example": "US",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "Main Phone > Phone Number",
-    "cleaned": "main_phone_phone_number",
-    "count": 4198,
-    "example": "8558379124",
-    "isUnique": false,
-    "uniqueExamples": []
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "Address > Line 1",
@@ -90,36 +94,14 @@
       "8 Hillside Circle",
       "4263 South Lakeshore Drive",
       "720 East 17th Street"
-    ]
-  },
-  {
-    "original": "Address > City",
-    "cleaned": "address_city",
-    "count": 4198,
-    "example": "Abbeville",
-    "isUnique": true,
-    "uniqueExamples": [
-      "Abbeville",
-      "Abilene",
-      "Abingdon",
-      "Absecon",
-      "Acworth",
-      "Ada",
-      "Addis",
-      "Adelanto",
-      "Adrian",
-      "Agawam Town"
-    ]
-  },
-  {
-    "original": "Address > Region",
-    "cleaned": "address_region",
-    "count": 4198,
-    "example": "LA",
-    "isUnique": true,
-    "uniqueExamples": [
-      "HI"
-    ]
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "Address > Postal Code",
@@ -138,53 +120,14 @@
       "1109",
       "1201",
       "1247"
-    ]
-  },
-  {
-    "original": "Active in Answers",
-    "cleaned": "active_in_answers",
-    "count": 4198,
-    "example": "TRUE",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "Answers Keywords",
-    "cleaned": "answers_keywords",
-    "count": 22,
-    "example": "Lake Saint Louis",
-    "isUnique": true,
-    "uniqueExamples": [
-      "Lake Saint Louis",
-      "North Saint Paul",
-      "South Saint Paul",
-      "Saint Ann",
-      "Saint Anthony",
-      "Saint Charles",
-      "Saint John",
-      "saint john",
-      "saint johns",
-      "saint matthews"
-    ]
-  },
-  {
-    "original": "Location City State",
-    "cleaned": "location_city_state",
-    "count": 4198,
-    "example": "Abbeville, LA",
-    "isUnique": true,
-    "uniqueExamples": [
-      "Abbeville, LA",
-      "Aberdeen, SD",
-      "Aberdeen, WA",
-      "Aberdeen, MD",
-      "Aberdeen, NC",
-      "Abilene, TX",
-      "Abingdon, VA",
-      "Absecon, NJ",
-      "Acworth, GA",
-      "Ada, OK"
-    ]
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "Location State",
@@ -194,26 +137,14 @@
     "isUnique": true,
     "uniqueExamples": [
       "HI"
-    ]
-  },
-  {
-    "original": "Searchable City",
-    "cleaned": "searchable_city",
-    "count": 4198,
-    "example": "Abbeville",
-    "isUnique": true,
-    "uniqueExamples": [
-      "Abbeville",
-      "Abilene",
-      "Abingdon",
-      "Absecon",
-      "Acworth",
-      "Ada",
-      "Addis",
-      "Adelanto",
-      "Adrian",
-      "Agawam Town"
-    ]
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "Location State Full Name",
@@ -223,63 +154,14 @@
     "isUnique": true,
     "uniqueExamples": [
       "Hawaii"
-    ]
-  },
-  {
-    "original": "Pages Phone Number",
-    "cleaned": "pages_phone_number",
-    "count": 4198,
-    "example": "8558379124",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "About CTA > Label",
-    "cleaned": "about_cta_label",
-    "count": 4198,
-    "example": "Browse Equipment",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "About CTA > Link Type",
-    "cleaned": "about_cta_link_type",
-    "count": 4198,
-    "example": "URL",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "About CTA > Link",
-    "cleaned": "about_cta_link",
-    "count": 4198,
-    "example": "https://www.bigrentz.com/equipment-rentals",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "Footer Address",
-    "cleaned": "footer_address",
-    "count": 4198,
-    "example": "Corporate Office",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "List of FAQ > Question",
-    "cleaned": "list_of_faq_question",
-    "count": 4198,
-    "example": "Where is BigRentz located?,Can I pick-up or drop off the equipment myself?,How long is each rental period?,Can I get a delivery tomorrow?,Does BigRentz service my area?",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "List of FAQ > Answer",
-    "cleaned": "list_of_faq_answer",
-    "count": 4198,
-    "example": "BigRentz's call center and corporate headquarters are located in Southern California.,\"No. For your safety, and limitations posed by our insurance policy, our haulers must be used for all equipment deliveries and pick\\-ups.\",One Day Rental = One (1) 8\\-hour shift over a 24 hour period. One Week Rental = Five (5) 8\\-hour shifts over a seven day period. One Month Rental = Twenty (20) 8\\-hour shifts over a 28 day period,\"Yes, in most cases we are able to deliver equipment the next day. Please do keep in mind that early morning delivery times fill up quickly and may not be available.  In some cases, if the equipment is available, and trucks are available, we can deliver the same day. If necessary, an outside hauler may be used, but normal delivery rates do not apply.\",\"Yes. BigRentz.com works with more than 12,000 local suppliers across the United States, so no matter where you are, we have a location nearby to serve you.  Our most popular service areas are New York City, Los Angeles, Chicago and Houston.\"",
-    "isUnique": false,
-    "uniqueExamples": []
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "About Geomodifier",
@@ -298,55 +180,14 @@
       "Absecon, Atlantic County, NJ",
       "Acworth, Cobb County, GA",
       "Ada, Pontotoc County, OK"
-    ]
-  },
-  {
-    "original": "Guide List > Title",
-    "cleaned": "guide_list_title",
-    "count": 4198,
-    "example": "Boom Lifts,Forklifts,Scissor Lifts,Dumpsters,Cranes,Mini Excavators,Skid Steer Loaders,Backhoe Loaders,Diesel Generators",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "Guide List > Description",
-    "cleaned": "guide_list_description",
-    "count": 4198,
-    "example": "\"Our boom lift rental guide covers the following topics: Do You Need a Boom Lift or a Scissor Lift?, Boom Lift Uses, 7 Types of Construction Lifts and Boom Lifts, How to Choose the Right Telescopic Boom Lift, Boom Lift Safety, Boom Lift Hazards.\",\"Our forklift rental guide covers the following topics: How Does a Forklift Work?, Elements of a Forklift, Types of Forklifts, How to Choose a Forklift, How to Choose Forklift Attachments, Why You Should Rent a Forklift, Common Forklift Hazards.\",\"Our scissor lift rental guide covers the following topics: Do You Need a Boom Lift or a Scissor Lift?, How Does a Scissor Lift Work?, 5 Types of Scissor Lifts, Figuring Out Which Scissor Lift You Need, Why You Should Rent?, Essential Scissor Lift Safety Tips.\",\"Our dumpster rental guide covers the following topics: Types of Dumpsters, Construction Dumpster Sizes, How To Choose a Dumpster Size, Cost to Rent a Dumpster, Why You Should Rent a Dumpster, What Can You Put in a Dumpster?, Building a Dumpster Enclosure.\",\"Our crane rental guide covers the following topics: How Do Cranes Work?, Types of Cranes, How to Choose a Crane, Why You Should Rent a Crane, Crane Safety Tips, Crane Hand Signals.\",\"Our mini excavator rental guide covers the following topics: Mini Excavator Basics, Parts of a Mini Excavator, Mini Excavator Sizes, How to Pick a Mini Excavator, How to Operate a Mini Excavator, Mini Excavator Alternatives.\",\"Our skid steer rental guide covers the following topics: Skid Steer Basics, Skid Steer Sizes, How To Pick a Skid Steer, How To Operate a Skid Steer, Skid Steer Alternatives, Skid Steer Rental Costs.\",\"Our backhoe rental guide covers the following topics: Backhoe Basics, Parts of a Backhoe, Backhoe Attachments, How to Operate a Backhoe, Safety Tips for Operating a Backhoe, How to Pick a Backhoe, Backhoe Alternatives, Frequently Asked Questions.\",\"Our generator rental guide covers the following topics: Generator Basics, How Does a Generator Work?, Types of Generators and Their Uses, How to Choose a Generator, Ampere Conversion Chart, Diesel Fuel Consumption Chart, Generator Maintenance, Generator Rental Costs, FAQ.\"",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "Guide List > CTA > Label",
-    "cleaned": "guide_list_cta_label",
-    "count": 4198,
-    "example": "Download the Boom Lift Rental Guide,Download the Forklift Rental Guide,Download the Scissor Lift Rental Guide,Download the Dumpster Rental Guide,Download the Crane Rental Guide,Download the Mini Excavator Rental Guide,Download the Skid Steer Rental Guide,Download the Backhoe Rental Guide,Download the Generator Rental Guide",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "Guide List > CTA > Link Type",
-    "cleaned": "guide_list_cta_link_type",
-    "count": 4198,
-    "example": "URL,URL,URL,URL,URL,URL,URL,URL,URL",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "Guide List > CTA > Link",
-    "cleaned": "guide_list_cta_link",
-    "count": 4198,
-    "example": "https://www.bigrentz.com/boom-lift-rental-guide-ebook,https://www.bigrentz.com/forklift-rental-guide-ebook,https://www.bigrentz.com/scissor-lift-rental-guide-ebook,https://www.bigrentz.com/dumpster-rental-guide-ebook,https://www.bigrentz.com/crane-rental-guide-ebook,https://www.bigrentz.com/mini-excavator-rental-guide-ebook,https://www.bigrentz.com/skid-steer-rental-guide-ebook,https://www.bigrentz.com/backhoe-rental-guide-ebook,https://www.bigrentz.com/generator-rental-guide-ebook",
-    "isUnique": false,
-    "uniqueExamples": []
-  },
-  {
-    "original": "Rental Partner Label",
-    "cleaned": "rental_partner_label",
-    "count": 4198,
-    "example": "locations near",
-    "isUnique": false,
-    "uniqueExamples": []
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "Page Meta Title",
@@ -365,7 +206,14 @@
       "Construction Equipment Rental in Absecon, NJ | BigRentz",
       "Construction Equipment Rental in Acworth, GA | BigRentz",
       "Construction Equipment Rental in Ada, OK | BigRentz"
-    ]
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "City Lat/Long > Latitude",
@@ -384,7 +232,14 @@
       "39.425329",
       "34.060116",
       "34.775596"
-    ]
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "City Lat/Long > Longitude",
@@ -403,7 +258,14 @@
       "-74.498341",
       "-84.665077",
       "-96.665253"
-    ]
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "Geocoded Lat/Long > Latitude",
@@ -422,7 +284,14 @@
       "39.422655",
       "34.0591802",
       "34.768432"
-    ]
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   },
   {
     "original": "Geocoded Lat/Long > Longitude",
@@ -441,148 +310,13 @@
       "-74.491775",
       "-84.6710992",
       "-96.66911"
-    ]
-  },
-  {
-    "original": "Yext Display Lat/Long > Latitude",
-    "cleaned": "yext_display_lat_long_latitude",
-    "count": 4198,
-    "example": "29.9744",
-    "isUnique": true,
-    "uniqueExamples": [
-      "29.9744",
-      "45.46468",
-      "46.97668",
-      "39.51586",
-      "35.13452",
-      "32.45451",
-      "36.70922",
-      "39.42356",
-      "34.76843",
-      "30.3714557"
-    ]
-  },
-  {
-    "original": "Yext Display Lat/Long > Longitude",
-    "cleaned": "yext_display_lat_long_longitude",
-    "count": 4198,
-    "example": "-92.1268",
-    "isUnique": true,
-    "uniqueExamples": [
-      "-92.1268",
-      "-98.4681",
-      "-123.81",
-      "-76.1702",
-      "-79.4356",
-      "-99.7381",
-      "-81.9709",
-      "-74.493",
-      "-84.6716",
-      "-96.6691"
-    ]
-  },
-  {
-    "original": "Yext Routable Lat/Long > Latitude",
-    "cleaned": "yext_routable_lat_long_latitude",
-    "count": 4096,
-    "example": "29.9744",
-    "isUnique": true,
-    "uniqueExamples": [
-      "29.9744",
-      "45.4642188",
-      "46.9771938",
-      "39.5158378",
-      "35.135409",
-      "32.4538806",
-      "36.709238",
-      "39.422536",
-      "34.0586268",
-      "34.7680574"
-    ]
-  },
-  {
-    "original": "Yext Routable Lat/Long > Longitude",
-    "cleaned": "yext_routable_lat_long_longitude",
-    "count": 4096,
-    "example": "-92.1268",
-    "isUnique": true,
-    "uniqueExamples": [
-      "-92.1268",
-      "-98.4672489",
-      "-123.8095887",
-      "-76.1716092",
-      "-79.43647",
-      "-99.737136",
-      "-81.9713019",
-      "-74.491783",
-      "-84.6712791",
-      "-96.6554344"
-    ]
-  },
-  {
-    "original": "Display Lat/Long > Latitude",
-    "cleaned": "display_lat_long_latitude",
-    "count": 3805,
-    "example": "29.9744",
-    "isUnique": true,
-    "uniqueExamples": [
-      "29.9744",
-      "45.46468",
-      "46.97668",
-      "39.51586",
-      "35.13452",
-      "32.45451",
-      "36.70922",
-      "39.42356",
-      "34.76843",
-      "30.36954"
-    ]
-  },
-  {
-    "original": "Display Lat/Long > Longitude",
-    "cleaned": "display_lat_long_longitude",
-    "count": 3805,
-    "example": "-92.1268",
-    "isUnique": true,
-    "uniqueExamples": [
-      "-92.1268",
-      "-98.4681",
-      "-123.81",
-      "-76.1702",
-      "-79.4356",
-      "-99.7381",
-      "-81.9709",
-      "-74.493",
-      "-84.6716",
-      "-96.6691"
-    ]
-  },
-  {
-    "original": "Routable Lat/Long > Latitude",
-    "cleaned": "routable_lat_long_latitude",
-    "count": 5,
-    "example": "29.9744",
-    "isUnique": true,
-    "uniqueExamples": [
-      "29.9744",
-      "34.7680574",
-      "41.081026",
-      "37.4752624",
-      "40.66347"
-    ]
-  },
-  {
-    "original": "Routable Lat/Long > Longitude",
-    "cleaned": "routable_lat_long_longitude",
-    "count": 5,
-    "example": "-92.1268",
-    "isUnique": true,
-    "uniqueExamples": [
-      "-92.1268",
-      "-96.6554344",
-      "-81.5216917",
-      "-105.8779354",
-      "-73.9387"
-    ]
+    ],
+    "index": true,
+    "wpMap": {
+      "mapped": true,
+      "fieldId": "",
+      "slug": "",
+      "type": ""
+    }
   }
 ]

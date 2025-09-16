@@ -108,9 +108,12 @@ function processMapping() {
       const headers = Object.keys(records[0] || {});
       const rowCount = records.length;
       const counts = headers.map(h => records.filter(r => r[h] && r[h].trim() !== '').length);
+      // Find the first record with at least one non-empty value
+      const exampleRecord = records.find(r => headers.some(h => r[h] && r[h].trim() !== ''));
       const examples = headers.map(h => {
-        const ex = records.find(r => r[h] && r[h].trim() !== '');
-        return ex ? ex[h].trim() : null;
+        return exampleRecord && exampleRecord[h] && exampleRecord[h].trim() !== ''
+          ? exampleRecord[h].trim()
+          : null;
       });
       const uniqueInfoArr = headers.map(h => {
         const valueCount = {};
@@ -131,7 +134,13 @@ function processMapping() {
           count: counts[i],
           example: examples[i],
           isUnique: uniqueInfoArr[i].isUnique,
-          uniqueExamples: uniqueInfoArr[i].isUnique ? uniqueInfoArr[i].uniqueExamples : []
+          uniqueExamples: uniqueInfoArr[i].isUnique ? uniqueInfoArr[i].uniqueExamples : [],
+          wpMap: {
+            mapped: true,
+            fieldId: "",
+            slug: "",
+            type: ""
+          }
         }))
         .filter(entry => entry.count > 0);
       if (map.length > 0) {
