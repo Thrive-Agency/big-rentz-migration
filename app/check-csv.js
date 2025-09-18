@@ -46,7 +46,7 @@ if (checkHeaders) {
       let color = colors.green;
       if (counts[i] === 0) color = colors.red;
       else if (counts[i] !== rowCount) color = colors.yellow;
-      console.log(` - ${h} (${color}${counts[i]}${colors.reset})`);
+      console.log(` ${i + 1}. ${h} (${color}${counts[i]}${colors.reset})`);
     });
   } catch (err) {
     console.error('Error reading CSV headers:', err);

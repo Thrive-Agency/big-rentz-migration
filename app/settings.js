@@ -30,6 +30,9 @@ export const config = {
   WC_VERSION: process.env.WC_VERSION,
   WP_ADMIN_USER: process.env.WP_ADMIN_USER,
 
+  // Custom post type slug set in the WordPress admin
+  WP_POST_SLUG: process.env.WP_POST_SLUG,
+
   // Certificate settings
   ALLOW_SELF_SIGNED_CERTS:
     MODE === 'development'

@@ -1,6 +1,7 @@
 // get-post.js
 // Usage: npm run get-post <id>
 import { getPostByType } from './services/wordpress.js';
+import {config} from './settings.js';
 
 const args = process.argv.slice(2);
 if (args.length < 1) {
@@ -9,7 +10,7 @@ if (args.length < 1) {
 }
 
 const postId = args[0];
-const postType = 'rental-locations'; // Change if needed
+const postType = config.WP_POST_SLUG;
 
 (async () => {
   try {
