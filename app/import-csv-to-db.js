@@ -55,17 +55,45 @@ if (indexCount !== 1) {
 }
 
 // Print summary
-console.log(`${colors.green}Loading Records table with csv data:${colors.reset}`);
-console.log(`${colors.green}total rows: ${totalRows}${colors.reset}`);
-console.log(`Columns in CSV: ${totalColumns}`);
+console.log(`${colors.white}Loading Records table with csv data:${colors.reset}`);
+console.log(`${colors.white}total rows: ${colors.green}${totalRows}${colors.reset}`);
+console.log(`${colors.white}Columns in CSV: ${colors.green}${totalColumns}${colors.reset}`);
 
 // Clean column names: lowercase, replace non-alphanumerics with _
 const cleanedColumns = csvHeaders.map(h => h.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, ''));
 let failed = 0;
 let errorLog = [];
 let imported = 0;
-const maxRows = 100;
-for (let i = 0; i < Math.min(records.length, maxRows); i++) {
+let importCount = records.length;
+
+process.stdin.setEncoding('utf8');
+const askImport = async () => {
+  process.stdout.write(`\n${colors.magenta}Import all rows or a portion?${colors.reset} ${colors.white}(1=all/2=portion):${colors.reset} `);
+  const answer = await new Promise(resolve => process.stdin.once('data', resolve));
+  const input = answer.trim().toLowerCase();
+  
+  // Check for portion: 2, p, por, port, porti, portio, portion
+  if (input === '2' || input.startsWith('p')) {
+    process.stdout.write(`How many rows to import? (1-${records.length}): `);
+    const numStr = await new Promise(resolve => process.stdin.once('data', resolve));
+    const num = parseInt(numStr.trim(), 10);
+    if (isNaN(num) || num < 1 || num > records.length) {
+      console.error(colors.red + 'Invalid number.' + colors.reset);
+      timer.end();
+      process.exit(1);
+    }
+    importCount = num;
+  } else if (input === '1' || input.startsWith('a')) {
+    // All rows selected, importCount already set to records.length
+  } else {
+    console.error(colors.red + 'Invalid selection. Use 1/all or 2/portion.' + colors.reset);
+    timer.end();
+    process.exit(1);
+  }
+};
+await askImport();
+
+for (let i = 0; i < importCount; i++) {
   const rowObj = {};
   for (let j = 0; j < csvHeaders.length; j++) {
     rowObj[cleanedColumns[j]] = records[i][csvHeaders[j]] || null;
@@ -78,7 +106,7 @@ for (let i = 0; i < Math.min(records.length, maxRows); i++) {
     failed++;
     errorLog.push(`Row ${i + 1}: ${JSON.stringify(rowObj)}\nError: ${err.message}`);
   }
-  progressBar(i + 1, Math.min(records.length, maxRows));
+  progressBar(i + 1, importCount);
 }
 
 // Write error log if needed
@@ -89,10 +117,10 @@ if (failed > 0) {
   console.log(colors.green + 'Import completed successfully.' + colors.reset);
 }
 
-console.log(`Rows attempted: ${totalRows}`);
+console.log(`Rows attempted: ${importCount}`);
 console.log(`Rows imported: ${imported}`);
-if (imported !== totalRows) {
-  console.log(colors.red + `Mismatch: Not all rows were imported.` + colors.reset);
+if (importCount < totalRows) {
+  console.log(colors.yellow + `Note: ${totalRows - importCount} rows remain in the CSV file.` + colors.reset);
 }
 timer.end();
 process.exit(failed > 0 ? 1 : 0);
