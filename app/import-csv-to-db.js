@@ -5,6 +5,7 @@ import getSingleCsvFile from './utils/getSingleCsvFile.js';
 import fs from 'fs';
 import { parse } from 'csv-parse/sync';
 import db from './db/db.js';
+import progressBar from './utils/progressBar.js';
 
 const header = new ScriptHeader('CSV to Database Import');
 header.print();
@@ -42,7 +43,7 @@ if (!fs.existsSync(mapPath)) {
 }
 const columnMap = JSON.parse(fs.readFileSync(mapPath, 'utf8'));
 const mappedColumns = columnMap.map(m => m.original);
-const cleanedColumns = columnMap.map(m => m.cleaned);
+// removed: const cleanedColumns = columnMap.map(m => m.cleaned);
 const totalNodes = columnMap.length;
 
 // Index validation
@@ -57,44 +58,17 @@ if (indexCount !== 1) {
 console.log(`${colors.green}Loading Records table with csv data:${colors.reset}`);
 console.log(`${colors.green}total rows: ${totalRows}${colors.reset}`);
 console.log(`Columns in CSV: ${totalColumns}`);
-console.log(`Columns being imported: ${totalNodes}`);
-if (totalNodes !== totalColumns) {
-  console.log(`${colors.yellow}Warning: Number of columns being imported does not match CSV columns.${colors.reset}`);
-  process.stdout.write('Continue? (y/N): ');
-  process.stdin.setEncoding('utf8');
-  const answer = await new Promise(resolve => process.stdin.once('data', resolve));
-  if (answer.trim().toLowerCase() !== 'y') {
-    console.log('Aborting import.');
-    timer.end();
-    process.exit(0);
-  }
-}
 
-// Check if records table is empty
-const checkTable = await db.pool.query('SELECT COUNT(*) FROM records');
-const existingRows = parseInt(checkTable.rows[0].count, 10);
-if (existingRows > 0) {
-  console.log(colors.yellow + `Records table already has ${existingRows} rows.` + colors.reset);
-  process.stdout.write('Do you intend to add additional rows to the database? (y/N): ');
-  process.stdin.setEncoding('utf8');
-  const answer = await new Promise(resolve => process.stdin.once('data', resolve));
-  if (answer.trim().toLowerCase() !== 'y') {
-    console.log('Aborting import.');
-    timer.end();
-    process.exit(0);
-  }
-}
-
-// Import rows
-let imported = 0;
+// Clean column names: lowercase, replace non-alphanumerics with _
+const cleanedColumns = csvHeaders.map(h => h.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, ''));
 let failed = 0;
-const errorLog = [];
-import progressBar from './utils/progressBar.js';
+let errorLog = [];
+let imported = 0;
 const maxRows = 100;
 for (let i = 0; i < Math.min(records.length, maxRows); i++) {
   const rowObj = {};
-  for (let j = 0; j < columnMap.length; j++) {
-    rowObj[columnMap[j].cleaned] = records[i][columnMap[j].original] || null;
+  for (let j = 0; j < csvHeaders.length; j++) {
+    rowObj[cleanedColumns[j]] = records[i][csvHeaders[j]] || null;
   }
   try {
     const id = await db.createRecord(rowObj);

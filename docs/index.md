@@ -19,5 +19,6 @@ Welcome to the documentation for the Big Rentz Migration project.
 - [WordPress Credentials](../README.md#how-to-get-your-wordpress-credentials)
 - [axios-wp.js documentation](./axios-wp.md)
 - [wordpress.js documentation](./wordpress.md)
+- [Help Script (interactive npm script runner)](./help-script.md)
 
 Refer to each section for details on configuration and usage.

@@ -1,3 +1,22 @@
+/**
+ * Finds duplicate entity_id values in the records table
+ * @returns {Promise<Array<{entity_id: string, count: number}>>}
+ */
+const findDuplicateEntityIds = async () => {
+  try {
+    const res = await pool.query(`
+      SELECT data->>'entity_id' AS entity_id, COUNT(*) AS count
+      FROM records
+      GROUP BY entity_id
+      HAVING COUNT(*) > 1
+      ORDER BY count DESC, entity_id ASC;
+    `);
+    return res.rows;
+  } catch (err) {
+    console.error('Error finding duplicate entity_id values:', err);
+    return [];
+  }
+};
 import { Pool } from 'pg';
 import { config } from '../settings.js';
 import fs from 'fs';
@@ -170,10 +189,10 @@ const getAndLockNextRecord = async () => {
       client.release();
       return null;
     }
-    // Only set processing=true when locking; do not update processing_started if already set
+    // Set processing=true and processing_started timestamp when locking
     await client.query(
-      'UPDATE records SET processing = true WHERE id = $1',
-      [record.id]
+      'UPDATE records SET processing = true, processing_started = $2 WHERE id = $1',
+      [record.id, new Date().toISOString()]
     );
     await client.query('COMMIT');
     client.release();
@@ -196,8 +215,8 @@ const unlockRecord = async (id) => {
   try {
     if (typeof id !== 'number' || id <= 0) throw new Error('Invalid record id');
     const res = await pool.query(
-      'UPDATE records SET processing = false WHERE id = $1',
-      [id]
+      'UPDATE records SET processing = false, processing_complete = $2 WHERE id = $1',
+      [id, new Date().toISOString()]
     );
     return res.rowCount === 1;
   } catch (err) {
@@ -216,6 +235,7 @@ const db = {
   getImportCount,
   getAndLockNextRecord,
   unlockRecord,
+  findDuplicateEntityIds,
 };
 
 export default db;

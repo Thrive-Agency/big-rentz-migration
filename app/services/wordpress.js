@@ -113,4 +113,4 @@ export async function getTaxTermId(searchTerm, taxonomySlug) {
       || t.name.toLowerCase() === searchTerm.toLowerCase()
   );
   return match ? match.id : null;
-}
+} 

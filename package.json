@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "format": "prettier --write .",
+    "format": "prettier --write .",
     "init-db": "node ./app/db/init-db.js",
     "show-schema": "node ./app/db/show-schema.js",
     "generate-column-map": "node ./app/generate-column-map.js",
     "check-csv-headers": "node ./app/check-csv.js -check-headers",
     "load-records": "node ./app/import-csv-to-db.js",
     "reset-db": "node app/reset-db.js",
-  "test-wp-api": "node app/services/test-wp-api.js",
-  "get-post": "node app/get-post.js",
-  "add-column-to-map": "node app/add-column-to-map.js",
-  "start": "node app/index.js"
+    "test-wp-api": "node app/services/test-wp-api.js",
+    "get-post": "node app/get-post.js",
+    "add-column-to-map": "node app/add-column-to-map.js",
+  "start": "node app/index.js",
+  "process-record": "node app/process-record.js",
+  "check-duplicates": "node app/check-duplicates.js",
+  "help": "node app/help.js"
   },
   "repository": {
     "type": "git",
