@@ -1,5 +1,6 @@
-import { createPostByType } from './services/wordpress.js';
+import { createPostByType, getTaxTermId } from './services/wordpress.js';
 import db from './db/db.js';
+import { applyMapping } from './merge-mapping-payload.js';
 
 (async () => {
   try {
@@ -9,27 +10,14 @@ import db from './db/db.js';
       console.log('No available records to process.');
       return;
     }
-    // Use dummy data for post creation test
-    const dummyData = {
-      title: 'Test Rental Location',
-      acf: {
-        latitude: '34.000000',
-        longitude: '-118.000000',
-        raw_latitude: '34.000123',
-        raw_longitude: '-118.000456',
-        address_line_1: '123 Main St',
-        address_line_2: 'Suite 100',
-        address_sub_local: 'Downtown',
-        postal_code: '12345',
-        friendly_location_full_name: 'Testville, TS 12345'
-      },
-      taxonomies: {
-        state: ['test-state']
-      }
-    };
-    const result = await createPostByType('rental-locations', dummyData);
-    console.log('Create post result:', result);
-  } catch (error) {
+  // Merge mapping and payload for the locked record using self-contained applyMapping
+  const mergedPayload = await applyMapping(record.data);
+  mergedPayload.status = 'publish'; // Set status to publish or as needed
+  //console.log('Merged Payload:', JSON.stringify(mergedPayload, null, 2));
+
+  const result = await createPostByType('rental-locations', mergedPayload);
+  console.log('Create post result:', result);
+} catch (error) {
     console.error('Error creating post:', error);
   }
   process.exit(0);

@@ -19,9 +19,8 @@
     ],
     "index": true,
     "wpMap": {
-      "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "mapped": false,
+      "targets": [],
       "handler": ""
     }
   },
@@ -44,9 +43,8 @@
       "25757409"
     ],
     "wpMap": {
-      "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "mapped": false,
+      "targets": [],
       "handler": ""
     }
   },
@@ -70,8 +68,9 @@
     ],
     "wpMap": {
       "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "targets": [
+        ["title"], ["acf", "address_city"]
+      ],
       "handler": ""
     }
   },
@@ -95,8 +94,9 @@
     ],
     "wpMap": {
       "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "targets": [
+        ["acf", "address_line_1"]
+      ],
       "handler": ""
     }
   },
@@ -120,8 +120,9 @@
     ],
     "wpMap": {
       "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "targets": [
+        ["acf", "postal_code"]
+      ],
       "handler": ""
     }
   },
@@ -135,9 +136,8 @@
       "HI"
     ],
     "wpMap": {
-      "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "mapped": false,
+      "targets": [],
       "handler": ""
     }
   },
@@ -152,9 +152,8 @@
     ],
     "wpMap": {
       "mapped": true,
-      "fieldId": "",
-      "slug": "",
-      "handler": ""
+      "targets": [["state"]],
+      "handler": ["getTaxonomyTermId", {"taxonomy": "state"}]
     }
   },
   {
@@ -177,8 +176,7 @@
     ],
     "wpMap": {
       "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "targets": [["acf", "friendly_location_full_name"]],
       "handler": ""
     }
   },
@@ -201,9 +199,8 @@
       "Construction Equipment Rental in Ada, OK | BigRentz"
     ],
     "wpMap": {
-      "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "mapped": false,
+      "targets": [],
       "handler": ""
     }
   },
@@ -227,8 +224,7 @@
     ],
     "wpMap": {
       "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "targets": [["acf", "raw_latitude"]],
       "handler": ""
     }
   },
@@ -252,8 +248,7 @@
     ],
     "wpMap": {
       "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "targets": [["acf", "raw_longitude"]],
       "handler": ""
     }
   },
@@ -277,8 +272,7 @@
     ],
     "wpMap": {
       "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "targets": [["acf", "latitude"]],
       "handler": ""
     }
   },
@@ -302,8 +296,7 @@
     ],
     "wpMap": {
       "mapped": true,
-      "fieldId": "",
-      "slug": "",
+      "targets": [["acf", "longitude"]],
       "handler": ""
     }
   }

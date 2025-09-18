@@ -1,4 +1,6 @@
 import wpAxios from './axios-wp.js';
+import fs from 'fs';
+import path from 'path';
 
 // Test endpoint: Get WP site info
 export async function getSiteInfo() {
@@ -57,11 +59,58 @@ export async function createPostByType(type, data) {
 
 // Generic: Get taxonomy terms
 export async function getTaxonomyTerms(taxonomy) {
+  // File-based cache with expiry
+  const cacheDir = path.resolve('./.cache');
+  const cacheFile = path.join(cacheDir, `taxonomy-${taxonomy}.json`);
+  const expiryMs = 60 * 60 * 1000; // 1 hour
+
+  // Ensure cache directory exists
+  if (!fs.existsSync(cacheDir)) {
+    fs.mkdirSync(cacheDir);
+  }
+
+  // Try to read cache
+  if (fs.existsSync(cacheFile)) {
+    try {
+      const cacheData = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+      if (cacheData.timestamp && Date.now() - cacheData.timestamp < expiryMs) {
+        return cacheData.terms;
+      }
+    } catch (err) {
+      // Ignore cache read errors, fall through to fetch
+    }
+  }
+
+  // Fetch from API
   try {
-    const response = await wpAxios.get(`/wp/v2/${taxonomy}`);
-    return response.data;
+    let allTerms = [];
+    let page = 1;
+    let response;
+
+    do {
+      response = await wpAxios.get(`/wp/v2/${taxonomy}`, { params: { page, per_page: 100 } });
+      allTerms = allTerms.concat(response.data);
+      page++;
+    } while (response.headers['x-wp-totalpages'] && page <= parseInt(response.headers['x-wp-totalpages'], 10));
+
+    // Write to cache
+    fs.writeFileSync(cacheFile, JSON.stringify({ timestamp: Date.now(), terms: allTerms }, null, 2));
+    return allTerms;
   } catch (error) {
     console.error(`WordPress API error (get taxonomy terms: ${taxonomy}):`, error.message);
     throw error;
   }
+}
+
+// Lookup state term ID by name or slug
+export async function getTaxTermId(searchTerm, taxonomySlug) {
+  const terms = await getTaxonomyTerms(taxonomySlug);
+  // Try to match by slug first, then name (case-insensitive)
+  console.log('Searching for term:', searchTerm, 'in taxonomy:', taxonomySlug);
+  console.log('Available terms:', terms);
+  const match = terms.find(
+    t => t.slug.toLowerCase() === searchTerm.toLowerCase()
+      || t.name.toLowerCase() === searchTerm.toLowerCase()
+  );
+  return match ? match.id : null;
 }

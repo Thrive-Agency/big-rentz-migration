@@ -2,8 +2,8 @@ import ScriptHeader from './utils/ScriptHeader.js';
 import ScriptTimer from './utils/ScriptTimer.js';
 import colors from './utils/colors.js';
 import getSingleCsvFile from './utils/getSingleCsvFile.js';
-import { findDuplicates } from './utils/csvUtils.js';
 import fs from 'fs';
+import { parse } from 'csv-parse/sync';
 import db from './db/db.js';
 
 const header = new ScriptHeader('CSV to Database Import');
@@ -21,9 +21,16 @@ try {
   process.exit(1);
 }
 const csvData = fs.readFileSync(csvPath, 'utf8');
-const lines = csvData.split(/\r?\n/).filter(line => line.trim() !== '');
-const csvHeaders = lines[0].split(',').map(h => h.trim());
-const totalRows = lines.length - 1;
+let records;
+try {
+  records = parse(csvData, { columns: true, skip_empty_lines: true });
+} catch (err) {
+  console.error(colors.red + 'Error parsing CSV: ' + err.message + colors.reset);
+  timer.end();
+  process.exit(1);
+}
+const csvHeaders = Object.keys(records[0] || {});
+const totalRows = records.length;
 const totalColumns = csvHeaders.length;
 
 // Load column map
@@ -83,12 +90,11 @@ let imported = 0;
 let failed = 0;
 const errorLog = [];
 import progressBar from './utils/progressBar.js';
-for (let i = 1; i < lines.length; i++) {
-  const cols = lines[i].split(',');
+const maxRows = 100;
+for (let i = 0; i < Math.min(records.length, maxRows); i++) {
   const rowObj = {};
   for (let j = 0; j < columnMap.length; j++) {
-    const mapIdx = csvHeaders.indexOf(columnMap[j].original);
-    rowObj[columnMap[j].cleaned] = mapIdx !== -1 ? cols[mapIdx] : null;
+    rowObj[columnMap[j].cleaned] = records[i][columnMap[j].original] || null;
   }
   try {
     const id = await db.createRecord(rowObj);
@@ -96,9 +102,9 @@ for (let i = 1; i < lines.length; i++) {
     else throw new Error('Insert failed');
   } catch (err) {
     failed++;
-    errorLog.push(`Row ${i}: ${JSON.stringify(rowObj)}\nError: ${err.message}`);
+    errorLog.push(`Row ${i + 1}: ${JSON.stringify(rowObj)}\nError: ${err.message}`);
   }
-  progressBar(i, totalRows);
+  progressBar(i + 1, Math.min(records.length, maxRows));
 }
 
 // Write error log if needed
@@ -116,3 +122,5 @@ if (imported !== totalRows) {
 }
 timer.end();
 process.exit(failed > 0 ? 1 : 0);
+
+
