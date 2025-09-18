@@ -7,12 +7,38 @@ import getSingleCsvFile from './utils/getSingleCsvFile.js';
 import { findDuplicates } from './utils/csvUtils.js';
 import { parse } from 'csv-parse/sync';
 
-function cleanHeader(header) {
+
+export function cleanHeader(header) {
   return header
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/^_+|_+$/g, '')
     .replace(/_+/g, '_');
+}
+
+/**
+ * Create a column map node for a single CSV column
+ * @param {string} header - The original column header
+ * @param {number} count - Number of non-empty values in column
+ * @param {string|null} example - Example value from column
+ * @param {boolean} isUnique - Whether column has unique values
+ * @param {Array<string>} uniqueExamples - Array of unique example values
+ * @returns {object} Column map node
+ */
+export function createColumnMapNode(header, count, example, isUnique, uniqueExamples) {
+  return {
+    original: header,
+    cleaned: cleanHeader(header),
+    count,
+    example,
+    isUnique,
+    uniqueExamples: isUnique ? uniqueExamples : [],
+    wpMap: {
+      mapped: true,
+      targets: [[cleanHeader(header)]],
+      handler: []
+    }
+  };
 }
 
 const args = process.argv.slice(2);
@@ -128,20 +154,13 @@ function processMapping() {
         };
       });
       const map = headers
-        .map((h, i) => ({
-          original: h,
-          cleaned: cleanHeader(h),
-          count: counts[i],
-          example: examples[i],
-          isUnique: uniqueInfoArr[i].isUnique,
-          uniqueExamples: uniqueInfoArr[i].isUnique ? uniqueInfoArr[i].uniqueExamples : [],
-          wpMap: {
-            mapped: true,
-            fieldId: "",
-            slug: "",
-            handler: ""
-          }
-        }))
+        .map((h, i) => createColumnMapNode(
+          h,
+          counts[i],
+          examples[i],
+          uniqueInfoArr[i].isUnique,
+          uniqueInfoArr[i].isUnique ? uniqueInfoArr[i].uniqueExamples : []
+        ))
         .filter(entry => entry.count > 0);
       if (map.length > 0) {
         map[0].index = true;
