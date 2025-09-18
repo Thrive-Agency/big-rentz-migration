@@ -19,10 +19,12 @@ if (answer1.trim().toLowerCase() !== 'y') {
   process.exit(0);
 }
 
+
+const force = process.argv.includes('--force');
 const importedCount = await db.getImportCount();
-if (importedCount > 0) {
+if (importedCount > 0 && !force) {
   console.log(colors.red + `Reset failed: There are ${importedCount} imported records.` + colors.reset);
-  console.log('Please use your database client to manage imported records.');
+  console.log('Use "npm run reset-db -- --force" to override and delete all records, including imported.');
   timer.end();
   process.exit(1);
 }
