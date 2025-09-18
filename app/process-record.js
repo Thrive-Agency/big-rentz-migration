@@ -24,8 +24,10 @@ export async function processNextRecord() {
 
     // if no result.id, consider it an errornpm 
     if (!result?.id) {
+      console.error('Error: No post ID returned from WordPress:', result);
+      await db.logError(record.id, 'No post ID returned from WordPress');
       throw new Error('Failed to create post in WordPress');
-      //TODO add log to db
+
     }
 
     // Finalize import for the record
@@ -36,6 +38,7 @@ export async function processNextRecord() {
     await db.unlockRecord(record.id);
     return { status: 'success', result };
   } catch (error) {
+     await db.logError(record.id, error.message || 'Unknown error during record processing');
     return { status: 'error', error };
   }
 }
