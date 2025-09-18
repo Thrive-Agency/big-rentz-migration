@@ -69,10 +69,15 @@ export async function applyMapping(record) {
 
       // Get the database column name from the attribute
       let attributeValue = record[colMap.cleaned];
-      // If a handler is specified, run it
-      if( colMap.wpMap.handler ) {
+      // If a handler is specified and is not empty/falsy, run it
+      if (
+        colMap.wpMap.handler &&
+        Array.isArray(colMap.wpMap.handler) &&
+        colMap.wpMap.handler.length > 0 &&
+        colMap.wpMap.handler[0] &&
+        typeof callbacks[colMap.wpMap.handler[0]] === 'function'
+      ) {
         console.log('colMap.wpMap.handler:', colMap.wpMap.handler);
-        // Found a handler run the callback
         attributeValue = await callbacks[colMap.wpMap.handler[0]](attributeValue, record, colMap.wpMap.handler[1]);
       }
       // Add the direct attributeValue or the result of the handler to the payload

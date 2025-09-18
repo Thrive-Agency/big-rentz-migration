@@ -14,6 +14,7 @@
     "reset-db": "node app/reset-db.js",
   "test-wp-api": "node app/services/test-wp-api.js",
   "get-post": "node app/get-post.js",
+  "add-column-to-map": "node app/add-column-to-map.js",
   "start": "node app/index.js"
   },
   "repository": {
