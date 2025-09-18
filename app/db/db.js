@@ -1,22 +1,3 @@
-/**
- * Finds duplicate entity_id values in the records table
- * @returns {Promise<Array<{entity_id: string, count: number}>>}
- */
-const findDuplicateEntityIds = async () => {
-  try {
-    const res = await pool.query(`
-      SELECT data->>'entity_id' AS entity_id, COUNT(*) AS count
-      FROM records
-      GROUP BY entity_id
-      HAVING COUNT(*) > 1
-      ORDER BY count DESC, entity_id ASC;
-    `);
-    return res.rows;
-  } catch (err) {
-    console.error('Error finding duplicate entity_id values:', err);
-    return [];
-  }
-};
 import { Pool } from 'pg';
 import { config } from '../settings.js';
 import fs from 'fs';
@@ -52,6 +33,7 @@ const pool = new Pool({
  * Tests the database connection by executing a simple query
  * @returns {Promise<boolean>} True if connection is successful, false otherwise
  */
+
 const testConnection = async () => {
   try {
     console.log('Testing database connection...');
@@ -222,6 +204,27 @@ const unlockRecord = async (id) => {
   } catch (err) {
     console.error('Failed to unlock record:', err);
     return false;
+  }
+};
+
+/**
+ * Finds duplicate entity_id values in the records table
+ * @returns {Promise<Array<{entity_id: string, count: number}>>}
+ */
+const findDuplicateEntityIds = async () => {
+  try {
+    const res = await pool.query(`
+      SELECT data->>'entity_id' AS entity_id, COUNT(*) AS count
+      FROM records
+      GROUP BY entity_id
+      HAVING COUNT(*) > 1
+      ORDER BY count DESC, entity_id ASC
+      LIMIT 10;
+    `);
+    return res.rows;
+  } catch (err) {
+    console.error('Error finding duplicate entity_id values:', err);
+    return [];
   }
 };
 

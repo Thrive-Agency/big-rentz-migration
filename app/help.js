@@ -30,13 +30,9 @@ process.stdin.once('data', input => {
   }
   const selected = scriptNames[num - 1];
   console.log(`${colors.green}Running:${colors.reset} npm run ${selected}\n`);
-  exec(`npm run ${selected}`, (err, stdout, stderr) => {
-    if (err) {
-      console.error(colors.red + 'Error running script:' + colors.reset, err);
-      process.exit(1);
-    }
-    process.stdout.write(stdout);
-    process.stderr.write(stderr);
-    process.exit(0);
+  // Use stdio: 'inherit' to preserve colors and formatting
+  import('child_process').then(({ spawn }) => {
+    const child = spawn('npm', ['run', selected], { stdio: 'inherit', shell: true });
+    child.on('exit', code => process.exit(code));
   });
 });
