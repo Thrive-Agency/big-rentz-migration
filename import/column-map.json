@@ -69,7 +69,13 @@
     "wpMap": {
       "mapped": true,
       "targets": [
-        ["title"], ["acf", "address_city"]
+        [
+          "title"
+        ],
+        [
+          "acf",
+          "address_city"
+        ]
       ],
       "handler": ""
     }
@@ -95,7 +101,10 @@
     "wpMap": {
       "mapped": true,
       "targets": [
-        ["acf", "address_line_1"]
+        [
+          "acf",
+          "address_line_1"
+        ]
       ],
       "handler": ""
     }
@@ -121,7 +130,10 @@
     "wpMap": {
       "mapped": true,
       "targets": [
-        ["acf", "postal_code"]
+        [
+          "acf",
+          "postal_code"
+        ]
       ],
       "handler": ""
     }
@@ -152,8 +164,17 @@
     ],
     "wpMap": {
       "mapped": true,
-      "targets": [["state"]],
-      "handler": ["getTaxonomyTermId", {"taxonomy": "state"}]
+      "targets": [
+        [
+          "state"
+        ]
+      ],
+      "handler": [
+        "getTaxonomyTermId",
+        {
+          "taxonomy": "state"
+        }
+      ]
     }
   },
   {
@@ -176,7 +197,12 @@
     ],
     "wpMap": {
       "mapped": true,
-      "targets": [["acf", "friendly_location_full_name"]],
+      "targets": [
+        [
+          "acf",
+          "friendly_location_full_name"
+        ]
+      ],
       "handler": ""
     }
   },
@@ -224,7 +250,12 @@
     ],
     "wpMap": {
       "mapped": true,
-      "targets": [["acf", "raw_latitude"]],
+      "targets": [
+        [
+          "acf",
+          "raw_latitude"
+        ]
+      ],
       "handler": ""
     }
   },
@@ -248,7 +279,12 @@
     ],
     "wpMap": {
       "mapped": true,
-      "targets": [["acf", "raw_longitude"]],
+      "targets": [
+        [
+          "acf",
+          "raw_longitude"
+        ]
+      ],
       "handler": ""
     }
   },
@@ -272,7 +308,12 @@
     ],
     "wpMap": {
       "mapped": true,
-      "targets": [["acf", "latitude"]],
+      "targets": [
+        [
+          "acf",
+          "latitude"
+        ]
+      ],
       "handler": ""
     }
   },
@@ -296,8 +337,39 @@
     ],
     "wpMap": {
       "mapped": true,
-      "targets": [["acf", "longitude"]],
+      "targets": [
+        [
+          "acf",
+          "longitude"
+        ]
+      ],
       "handler": ""
+    }
+  },
+  {
+    "original": "Address > Line 2",
+    "cleaned": "address_line_2",
+    "wpMap": {
+      "mapped": true,
+      "targets": [
+        [
+          "address_line_2"
+        ]
+      ],
+      "handler": []
+    }
+  },
+  {
+    "original": "Address > Sublocality",
+    "cleaned": "address_sublocality",
+    "wpMap": {
+      "mapped": true,
+      "targets": [
+        [
+          "address_sub_local"
+        ]
+      ],
+      "handler": []
     }
   }
 ]
