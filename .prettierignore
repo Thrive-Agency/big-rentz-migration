@@ -1,0 +1,8 @@
+# Prettier configuration for Big Rentz Migration
+# See https://prettier.io/docs/en/options.html for all options
+
+*.js
+*.json
+*.md
+*.yml
+*.yaml
