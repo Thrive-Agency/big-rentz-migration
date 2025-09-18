@@ -20,19 +20,30 @@ scriptNames.forEach((name, i) => {
   console.log(`${colors.green}${i + 1}${colors.reset}. ${colors.cyan}${name}${colors.reset} - (${colors.white}npm run ${name}${colors.reset})`);
 });
 
-process.stdout.write(`\n${colors.blue}Select a script number to run: ${colors.reset}`);
-process.stdin.setEncoding('utf8');
-process.stdin.once('data', input => {
-  const num = parseInt(input.trim(), 10);
-  if (isNaN(num) || num < 1 || num > scriptNames.length) {
-    console.error(colors.red + 'Invalid selection.' + colors.reset);
-    process.exit(1);
+process.stdout.write(`\n${colors.blue}Select a script number to run (Esc to exit): ${colors.reset}`);
+process.stdin.setRawMode(true);
+process.stdin.resume();
+let inputBuffer = '';
+process.stdin.on('data', chunk => {
+  // Esc key (ASCII 27)
+  if (chunk.length === 1 && chunk[0] === 27) {
+    console.log(colors.cyan + '\nExiting help menu.' + colors.reset);
+    process.exit(0);
   }
-  const selected = scriptNames[num - 1];
-  console.log(`${colors.green}Running:${colors.reset} npm run ${selected}\n`);
-  // Use stdio: 'inherit' to preserve colors and formatting
-  import('child_process').then(({ spawn }) => {
-    const child = spawn('npm', ['run', selected], { stdio: 'inherit', shell: true });
-    child.on('exit', code => process.exit(code));
-  });
+  // Enter key
+  if (chunk.length === 1 && (chunk[0] === 10 || chunk[0] === 13)) {
+    const num = parseInt(inputBuffer.trim(), 10);
+    if (isNaN(num) || num < 1 || num > scriptNames.length) {
+      console.error(colors.red + '\nInvalid selection.' + colors.reset);
+      process.exit(1);
+    }
+    const selected = scriptNames[num - 1];
+    console.log(`${colors.green}Running:${colors.reset} npm run ${selected}\n`);
+    import('child_process').then(({ spawn }) => {
+      const child = spawn('npm', ['run', selected], { stdio: 'inherit', shell: true });
+      child.on('exit', code => process.exit(code));
+    });
+  } else {
+    inputBuffer += chunk.toString();
+  }
 });
