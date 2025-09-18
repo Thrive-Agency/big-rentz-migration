@@ -102,14 +102,26 @@ const createRecord = async (data) => {
  * @param {Object} data - The new data to store (will be stringified to JSON)
  * @returns {Promise<boolean>} True if update succeeded, false otherwise
  */
-const updateRecord = async (id, data) => {
+const updateRecord = async (id, updateFields) => {
   try {
     if (typeof id !== 'number' || id <= 0) throw new Error('Invalid record id');
-    if (typeof data !== 'object' || data === null) throw new Error('Data must be a non-null object');
-    const res = await pool.query(
-      'UPDATE records SET data = $1 WHERE id = $2',
-      [JSON.stringify(data), id]
-    );
+    if (typeof updateFields !== 'object' || updateFields === null) throw new Error('Update fields must be a non-null object');
+    // Build dynamic SET clause
+    const allowed = ['data', 'imported', 'imported_id', 'processing_complete', 'processing'];
+    const sets = [];
+    const values = [];
+    let idx = 1;
+    for (const key of allowed) {
+      if (key in updateFields) {
+        sets.push(`${key} = $${idx}`);
+        values.push(key === 'data' ? JSON.stringify(updateFields[key]) : updateFields[key]);
+        idx++;
+      }
+    }
+    if (sets.length === 0) throw new Error('No valid fields to update');
+    values.push(id);
+    const sql = `UPDATE records SET ${sets.join(', ')} WHERE id = $${idx}`;
+    const res = await pool.query(sql, values);
     return res.rowCount === 1;
   } catch (err) {
     console.error('Failed to update record:', err);
@@ -228,6 +240,41 @@ const findDuplicateEntityIds = async () => {
   }
 };
 
+/**
+ * Finalizes import for a record by updating status columns
+ * @param {number} id - The record id to update
+ * @param {number|string} imported_id - The WordPress post id
+ * @returns {Promise<Object|null>} The updated row or null on failure
+ */
+const finalizeImport = async (id, imported_id) => {
+  console.log('Finalizing import for record id:', id, 'with imported_id:', imported_id);
+  try {
+    if (typeof id !== 'number' || id <= 0) throw new Error('Invalid record id');
+    const updateFields = {
+      imported: true,
+      imported_id,
+      processing_complete: new Date().toISOString(),
+      processing: false
+    };
+    // Build dynamic SET clause
+    const sets = [];
+    const values = [];
+    let idx = 1;
+    for (const key of Object.keys(updateFields)) {
+      sets.push(`${key} = $${idx}`);
+      values.push(updateFields[key]);
+      idx++;
+    }
+    values.push(id);
+    const sql = `UPDATE records SET ${sets.join(', ')} WHERE id = $${idx} RETURNING *`;
+    const res = await pool.query(sql, values);
+    return res.rows[0] || null;
+  } catch (err) {
+    console.error('Failed to finalize import:', err);
+    return null;
+  }
+};
+
 const db = {
   testConnection,
   pool,
@@ -239,6 +286,7 @@ const db = {
   getAndLockNextRecord,
   unlockRecord,
   findDuplicateEntityIds,
+  finalizeImport,
 };
 
 export default db;

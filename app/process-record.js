@@ -19,9 +19,20 @@ export async function processNextRecord() {
     // Merge mapping and payload for the locked record
     const mergedPayload = await applyMapping(record.data);
     mergedPayload.status = 'publish';
-  // Send to WordPress using post type from settings
-  const result = await createPostByType(config.WP_POST_SLUG, mergedPayload);
-    // Unlock record after processing
+    // Send to WordPress using post type from settings
+    const result = await createPostByType(config.WP_POST_SLUG, mergedPayload);
+
+    // if no result.id, consider it an errornpm 
+    if (!result?.id) {
+      throw new Error('Failed to create post in WordPress');
+      //TODO add log to db
+    }
+
+    // Finalize import for the record
+    console.log('Record processed successfully, finalizing import...');
+    await db.finalizeImport(record.id, result?.id || null);
+
+    // Unlock record after processing (for legacy compatibility)
     await db.unlockRecord(record.id);
     return { status: 'success', result };
   } catch (error) {
