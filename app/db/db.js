@@ -275,6 +275,45 @@ const finalizeImport = async (id, imported_id) => {
   }
 };
 
+/**
+ * Log errors to the database table import_errors, checks import errors for a given record_id and apends the error message or creates a new row if none exists
+ *
+ * @record_id {number} - The ID of the record to log errors for
+ * @error {Error} - The error object to log
+ */
+ const logError = async (record_id, error) => {
+  try {
+    // cast the record_id to integer to ensure it's valid
+    const recId = parseInt(record_id, 10);
+    if (isNaN(recId) || recId <= 0) throw new Error('Invalid record id for logging error');
+    
+    // Check if an error entry already exists for this record_id
+    const checkRes = await pool.query(
+      'SELECT * FROM import_errors WHERE record_id = $1',
+      [recId]
+    );
+    if (checkRes.rows.length > 0) {
+      // Append to existing error message
+      const existingError = checkRes.rows[0].error_message;
+      const newErrorMessage = `${existingError}\n${new Date().toISOString()}: ${error.message}`;
+      await pool.query(
+        'UPDATE import_errors SET error_message = $1, occurred_at = $2 WHERE record_id = $3',
+        [newErrorMessage, new Date().toISOString(), recId]
+      );
+    } else {
+      // Create a new error entry
+      const errorMessage = `${new Date().toISOString()}: ${error.message}`;
+      await pool.query(
+        'INSERT INTO import_errors (record_id, error_message, occurred_at) VALUES ($1, $2, $3)',
+        [recId, errorMessage, new Date().toISOString()]
+      );
+    }
+    console.log(`Logged error for record_id ${recId}`);
+  } catch (err) {
+    console.error('Failed to log error to database:', err);
+  }
+ }
+
 const db = {
   testConnection,
   pool,
@@ -287,6 +326,7 @@ const db = {
   unlockRecord,
   findDuplicateEntityIds,
   finalizeImport,
+  logError,
 };
 
 export default db;
