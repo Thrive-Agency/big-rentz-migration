@@ -16,6 +16,7 @@
     "add-column-to-map": "node app/add-column-to-map.js",
   "start": "node app/index.js",
   "process-record": "node app/process-record.js",
+  "bulk-process": "node app/bulk-process.js",
   "check-duplicates": "node app/check-duplicates.js",
   "help": "node app/help.js"
   },

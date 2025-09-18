@@ -62,7 +62,7 @@ export async function applyMapping(record) {
   try {
     const columnMap = getJsonOrThrow(columnMapPath, 'column-map.json');
     const result = {};
-    console.log('Record:', record);
+    //console.log('Record:', record);
     for (const colMap of columnMap) {
       // Skip element if not set to map
       if (!colMap.wpMap || !colMap.wpMap.mapped) continue;
@@ -77,7 +77,7 @@ export async function applyMapping(record) {
         colMap.wpMap.handler[0] &&
         typeof callbacks[colMap.wpMap.handler[0]] === 'function'
       ) {
-        console.log('colMap.wpMap.handler:', colMap.wpMap.handler);
+        //console.log('colMap.wpMap.handler:', colMap.wpMap.handler);
         attributeValue = await callbacks[colMap.wpMap.handler[0]](attributeValue, record, colMap.wpMap.handler[1]);
       }
       // Add the direct attributeValue or the result of the handler to the payload
@@ -88,7 +88,7 @@ export async function applyMapping(record) {
         throw new Error(`No targets defined in mapping for column: ${colMap.cleaned}`);
       }
     }
-    console.log('Final merged result:', result);
+    //console.log('Final merged result:', result);
     return result;
   } catch (error) {
     console.error('Error occurred during merge mapping: ', error)
