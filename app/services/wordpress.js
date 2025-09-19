@@ -107,7 +107,7 @@ export async function getTaxTermId(searchTerm, taxonomySlug) {
   const terms = await getTaxonomyTerms(taxonomySlug);
   // Try to match by slug first, then name (case-insensitive)
   console.log('Searching for term:', searchTerm, 'in taxonomy:', taxonomySlug);
-  console.log('Available terms:', terms);
+  //console.log('Available terms:', terms);
   const match = terms.find(
     t => t.slug.toLowerCase() === searchTerm.toLowerCase()
       || t.name.toLowerCase() === searchTerm.toLowerCase()
