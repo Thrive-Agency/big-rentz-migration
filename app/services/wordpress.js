@@ -24,11 +24,20 @@ export async function getCustomPostTypes() {
   }
 }
 
-// Generic: Get all posts for a custom post type
+// Generic: Get all posts for a custom post type (handles pagination)
 export async function getPostsByType(type) {
   try {
-    const response = await wpAxios.get(`/wp/v2/${type}`);
-    return response.data;
+    let allPosts = [];
+    let page = 1;
+    let response;
+
+    do {
+      response = await wpAxios.get(`/wp/v2/${type}`, { params: { page, per_page: 100 } });
+      allPosts = allPosts.concat(response.data);
+      page++;
+    } while (response.headers['x-wp-totalpages'] && page <= parseInt(response.headers['x-wp-totalpages'], 10));
+
+    return allPosts;
   } catch (error) {
     console.error(`WordPress API error (get posts for type: ${type}):`, error.message);
     throw error;
@@ -98,6 +107,19 @@ export async function getTaxonomyTerms(taxonomy) {
     return allTerms;
   } catch (error) {
     console.error(`WordPress API error (get taxonomy terms: ${taxonomy}):`, error.message);
+    throw error;
+  }
+}
+
+// Generic: Delete a post by type and ID
+export async function deletePostByType(type, id) {
+  try {
+    const response = await wpAxios.delete(`/wp/v2/${type}/${id}`, {
+      params: { force: true } // Bypass trash, permanently delete
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`WordPress API error (delete post for type: ${type}, id: ${id}):`, error.message);
     throw error;
   }
 }
