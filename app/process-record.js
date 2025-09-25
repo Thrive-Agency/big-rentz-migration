@@ -19,6 +19,7 @@ export async function processNextRecord() {
     // Merge mapping and payload for the locked record
     const mergedPayload = await applyMapping(record.data);
     mergedPayload.status = 'publish';
+    console.log('Merged payload for record ID', record.id, ':', mergedPayload);
     // Send to WordPress using post type from settings
     const result = await createPostByType(config.WP_POST_SLUG, mergedPayload);
 

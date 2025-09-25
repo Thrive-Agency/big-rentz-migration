@@ -21,5 +21,6 @@ Welcome to the documentation for the Big Rentz Migration project.
 - [wordpress.js documentation](./wordpress.md)
 - [WordPress Post Deletion Tools](./deletion-tools.md)
 - [Help Script (interactive npm script runner)](./help-script.md)
+- [Get Recent Errors](./get-recent-errors.md)
 
 Refer to each section for details on configuration and usage.

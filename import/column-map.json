@@ -21,7 +21,7 @@
     "wpMap": {
       "mapped": false,
       "targets": [],
-      "handler": ""
+      "handler": ["logValue"]
     }
   },
   {
@@ -256,7 +256,12 @@
           "raw_latitude"
         ]
       ],
-      "handler": ""
+      "handler": [
+        "setFallbackField",
+        {
+          "sourceField": "yext_display_lat_long_latitude"
+        }
+      ]
     }
   },
   {
@@ -285,12 +290,16 @@
           "raw_longitude"
         ]
       ],
-      "handler": ""
+      "handler": [
+        "setFallbackField",
+        {
+          "sourceField": "yext_display_lat_long_longitude"
+        }
+      ]
     }
   },
   {
-    "original": "Geocoded Lat/Long > Latitude",
-    "cleaned": "geocoded_lat_long_latitude",
+    "cleaned": "yext_display_lat_long_latitude",
     "count": 3851,
     "example": "29.9746999",
     "isUnique": true,
@@ -318,8 +327,7 @@
     }
   },
   {
-    "original": "Geocoded Lat/Long > Longitude",
-    "cleaned": "geocoded_lat_long_longitude",
+    "cleaned": "yext_display_lat_long_longitude",
     "count": 3851,
     "example": "-92.1265",
     "isUnique": true,
@@ -343,7 +351,7 @@
           "longitude"
         ]
       ],
-      "handler": ""
+      "handler": []
     }
   },
   {
@@ -370,6 +378,20 @@
         ]
       ],
       "handler": []
+    }
+  },
+  {
+    "original": "Directory Rental Partners",
+    "cleaned": "directory_rental_partners",
+    "wpMap": {
+      "mapped": true,
+      "targets": [
+        [
+          "acf",
+          "total_rental_partners_for_city"
+        ]
+      ],
+      "handler": ["toInteger"]
     }
   }
 ]

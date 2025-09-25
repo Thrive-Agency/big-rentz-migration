@@ -9,6 +9,7 @@
     "show-schema": "node ./app/db/show-schema.js",
     "generate-column-map": "node ./app/generate-column-map.js",
     "check-csv-headers": "node ./app/check-csv.js -check-headers",
+    "check-db-headers": "node ./app/check-db.js -check-headers",
     "load-records": "node ./app/import-csv-to-db.js",
     "reset-db": "node app/reset-db.js",
     "test-wp-api": "node app/services/test-wp-api.js",
@@ -20,6 +21,7 @@
     "process-record": "node app/process-record.js",
     "bulk-process": "node app/bulk-process.js",
     "check-duplicates": "node app/check-duplicates.js",
+    "get-recent-errors": "node app/get-recent-errors.js",
     "help": "node app/help.js"
   },
   "repository": {
