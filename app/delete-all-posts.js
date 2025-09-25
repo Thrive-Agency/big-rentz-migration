@@ -5,6 +5,7 @@ import { config } from './settings.js';
 import colors from './utils/colors.js';
 import ScriptHeader from './utils/ScriptHeader.js';
 import ScriptTimer from './utils/ScriptTimer.js';
+import progressBar from './utils/progressBar.js';
 
 const header = new ScriptHeader('Delete All Posts', 'red');
 header.print();
@@ -39,8 +40,18 @@ let errors = 0;
 const errorLog = [];
 
 try {
-  console.log(`${colors.yellow}Fetching all posts of type "${config.WP_POST_SLUG}"...${colors.reset}`);
-  const posts = await getPostsByType(config.WP_POST_SLUG);
+  process.stdout.write(`${colors.yellow}Fetching posts...${colors.reset}`);
+  
+  // Fetch posts with running count
+  const posts = await getPostsByType(config.WP_POST_SLUG, (count) => {
+    process.stdout.clearLine(0);
+    process.stdout.cursorTo(0);
+    process.stdout.write(`${colors.yellow}Fetching posts... ${count}${colors.reset}`);
+  });
+  
+  // Clear the fetching line and show final count
+  process.stdout.clearLine(0);
+  process.stdout.cursorTo(0);
   
   if (posts.length === 0) {
     console.log(`${colors.cyan}No posts found to delete.${colors.reset}`);
@@ -48,18 +59,26 @@ try {
     process.exit(0);
   }
 
-  console.log(`${colors.yellow}Found ${posts.length} posts. Starting deletion...${colors.reset}`);
+  console.log(`${colors.yellow}Found ${posts.length} posts. Beginning deletion:${colors.reset}`);
 
   for (const post of posts) {
     try {
       await deletePostByType(config.WP_POST_SLUG, post.id);
       deleted++;
-      console.log(`${colors.green}Deleted post ${post.id}: "${post.title?.rendered || 'No title'}" (${deleted}/${posts.length})${colors.reset}`);
+      
+      // Update progress bar
+      progressBar(deleted, posts.length);
+      
     } catch (error) {
       errors++;
       const errorMsg = `Failed to delete post ${post.id}: ${error.message}`;
       errorLog.push(errorMsg);
-      console.error(`${colors.red}${errorMsg}${colors.reset}`);
+      
+      // Update progress bar even for errors
+      progressBar(deleted + errors, posts.length);
+      
+      // Show error on new line after progress bar
+      console.log(`${colors.red}Error deleting post ${post.id}: ${error.message}${colors.reset}`);
     }
   }
 

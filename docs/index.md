@@ -9,6 +9,7 @@ Welcome to the documentation for the Big Rentz Migration project.
 - [Database Connection](./db.md)
 - [CSV Utilities](./csv-utils.md)
 - [Check CSV Script](./check-csv.md)
+- [Check Database Headers](./check-db-headers.md)
 - [Script Timer Utility](./script-timer.md)
 - [Script Header Utility](./script-header.md)
 - [Column Map Generator](./column-map-generator.md)

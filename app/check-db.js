@@ -3,6 +3,48 @@ import ScriptTimer from './utils/ScriptTimer.js';
 import colors from './utils/colors.js';
 import db from './db/db.js';
 
+// Function to display sample data for a specific field
+async function displaySampleData(headers, rows, fieldNumber) {
+  if (isNaN(fieldNumber) || fieldNumber < 1 || fieldNumber > headers.length) {
+    console.error(colors.red + `Invalid field number. Please enter a number between 1 and ${headers.length}.` + colors.reset);
+    return;
+  }
+
+  const selectedField = headers[fieldNumber - 1];
+  console.log(`\n${colors.green}Sample data for field "${selectedField}":${colors.reset}`);
+  console.log(`${colors.magenta}${'='.repeat(40)}${colors.reset}`);
+  
+  // Get rows that have non-empty data for this field
+  const rowsWithData = rows.filter(row => {
+    const cellValue = row.data[selectedField];
+    return cellValue !== null && 
+           cellValue !== undefined && 
+           cellValue !== '' && 
+           (typeof cellValue === 'string' ? cellValue.toLowerCase() !== 'null' : true);
+  });
+  
+  // Get 5 random samples
+  const sampleCount = Math.min(5, rowsWithData.length);
+  const samples = [];
+  const usedIndices = new Set();
+  
+  while (samples.length < sampleCount) {
+    const randomIndex = Math.floor(Math.random() * rowsWithData.length);
+    if (!usedIndices.has(randomIndex)) {
+      usedIndices.add(randomIndex);
+      samples.push(rowsWithData[randomIndex].data[selectedField]);
+    }
+  }
+  
+  samples.forEach((sample, i) => {
+    const displayValue = typeof sample === 'string' ? sample : JSON.stringify(sample);
+    console.log(`${colors.yellow}${i + 1}.${colors.reset} ${colors.white}${displayValue}${colors.reset}`);
+  });
+  
+  console.log(`${colors.magenta}${'='.repeat(40)}${colors.reset}`);
+  console.log(`${colors.cyan}Showing ${sampleCount} sample(s) from ${rowsWithData.length} records with data${colors.reset}\n`);
+}
+
 // Function to prompt user for field selection and show sample data
 async function promptForSampleData(headers, rows) {
   return new Promise((resolve) => {
@@ -37,39 +79,7 @@ async function promptForSampleData(headers, rows) {
           return; // Don't exit, allow user to try again
         }
         
-        const selectedField = headers[num - 1];
-        console.log(`\n${colors.green}Sample data for field "${selectedField}":${colors.reset}`);
-        console.log(`${colors.magenta}${'='.repeat(40)}${colors.reset}`);
-        
-        // Get rows that have non-empty data for this field
-        const rowsWithData = rows.filter(row => {
-          const cellValue = row.data[selectedField];
-          return cellValue !== null && 
-                 cellValue !== undefined && 
-                 cellValue !== '' && 
-                 (typeof cellValue === 'string' ? cellValue.toLowerCase() !== 'null' : true);
-        });
-        
-        // Get 5 random samples
-        const sampleCount = Math.min(5, rowsWithData.length);
-        const samples = [];
-        const usedIndices = new Set();
-        
-        while (samples.length < sampleCount) {
-          const randomIndex = Math.floor(Math.random() * rowsWithData.length);
-          if (!usedIndices.has(randomIndex)) {
-            usedIndices.add(randomIndex);
-            samples.push(rowsWithData[randomIndex].data[selectedField]);
-          }
-        }
-        
-        samples.forEach((sample, i) => {
-          const displayValue = typeof sample === 'string' ? sample : JSON.stringify(sample);
-          console.log(`${colors.yellow}${i + 1}.${colors.reset} ${colors.white}${displayValue}${colors.reset}`);
-        });
-        
-        console.log(`${colors.magenta}${'='.repeat(40)}${colors.reset}`);
-        console.log(`${colors.cyan}Showing ${sampleCount} sample(s) from ${rowsWithData.length} records with data${colors.reset}\n`);
+        displaySampleData(headers, rows, num);
         
         process.stdin.setRawMode(false);
         process.stdin.removeListener('data', dataHandler);
@@ -92,12 +102,16 @@ async function promptForSampleData(headers, rows) {
 const args = process.argv.slice(2);
 const checkHeaders = args.includes('-check-headers');
 
+// Check if a field number was provided directly
+const fieldNumberArg = args.find(arg => /^\d+$/.test(arg));
+const fieldNumber = fieldNumberArg ? parseInt(fieldNumberArg, 10) : null;
+
 const header = new ScriptHeader('Database Import: Check Headers');
 header.print();
 const timer = new ScriptTimer('Database Header Check');
 timer.start();
 
-if (checkHeaders) {
+if (checkHeaders || fieldNumber) {
   try {
     // Get all records from the database
     const result = await db.pool.query('SELECT data FROM records WHERE data IS NOT NULL');
@@ -134,17 +148,23 @@ if (checkHeaders) {
       return count;
     });
     
-    console.log(`\nTotal records: ${rowCount}\n`);
-    console.log('Headers found in database records:');
-    headers.forEach((h, i) => {
-      let color = colors.green;
-      if (counts[i] === 0) color = colors.red;
-      else if (counts[i] !== rowCount) color = colors.yellow;
-      console.log(` ${i + 1}. ${h} (${color}${counts[i]}${colors.reset})`);
-    });
+    // If a field number was provided directly, show sample data immediately
+    if (fieldNumber) {
+      displaySampleData(headers, result.rows, fieldNumber);
+    } else {
+      // Otherwise, show the full list and interactive selection
+      console.log(`\nTotal records: ${rowCount}\n`);
+      console.log('Headers found in database records:');
+      headers.forEach((h, i) => {
+        let color = colors.green;
+        if (counts[i] === 0) color = colors.red;
+        else if (counts[i] !== rowCount) color = colors.yellow;
+        console.log(` ${i + 1}. ${h} (${color}${counts[i]}${colors.reset})`);
+      });
 
-    // Interactive field selection for sample data
-    await promptForSampleData(headers, result.rows);
+      // Interactive field selection for sample data
+      await promptForSampleData(headers, result.rows);
+    }
     
   } catch (err) {
     console.error('Error reading database headers:', err);
@@ -154,7 +174,11 @@ if (checkHeaders) {
   timer.end();
   process.exit(0);
 } else {
-  console.log('No action specified. Use -check-headers to print headers.');
+  console.log('No action specified.');
+  console.log('Usage:');
+  console.log('  -check-headers    Show all headers and interactive selection');
+  console.log('  <field_number>    Show sample data for specific field number');
+  console.log('  Example: npm run check-db-headers 83');
   await db.pool.end();
   timer.end();
   process.exit(1);

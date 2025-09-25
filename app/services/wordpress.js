@@ -25,7 +25,7 @@ export async function getCustomPostTypes() {
 }
 
 // Generic: Get all posts for a custom post type (handles pagination)
-export async function getPostsByType(type) {
+export async function getPostsByType(type, progressCallback) {
   try {
     let allPosts = [];
     let page = 1;
@@ -34,6 +34,12 @@ export async function getPostsByType(type) {
     do {
       response = await wpAxios.get(`/wp/v2/${type}`, { params: { page, per_page: 100 } });
       allPosts = allPosts.concat(response.data);
+      
+      // Call progress callback if provided
+      if (progressCallback) {
+        progressCallback(allPosts.length);
+      }
+      
       page++;
     } while (response.headers['x-wp-totalpages'] && page <= parseInt(response.headers['x-wp-totalpages'], 10));
 
