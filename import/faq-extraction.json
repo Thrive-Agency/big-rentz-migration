@@ -1,6 +1,6 @@
 {
   "description": "Extract FAQ data and create individual FAQ posts",
-  "cpt_slug": "faqs",
+  "cpt_slug": "equipment_faqs",
   "source_record_id": 1,
   "processing_mode": "array_pairing",
   "columns": {
@@ -10,9 +10,7 @@
   "wordpress_mapping": {
     "fields": {
       "title": "questions",
-      "content": "answers",
-      "acf.faq_question": "questions",
-      "acf.faq_answer": "answers"
+      "content": "answers"
     },
     "status": "publish"
   },

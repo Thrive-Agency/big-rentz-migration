@@ -12,6 +12,7 @@
     "check-db-headers": "node ./app/check-db.js -check-headers",
     "load-records": "node ./app/import-csv-to-db.js",
     "reset-db": "node app/reset-db.js",
+    "soft-reset-db": "node app/soft-reset-db.js",
     "test-wp-api": "node app/services/test-wp-api.js",
     "get-post": "node app/get-post.js",
     "delete": "node app/delete-post.js",

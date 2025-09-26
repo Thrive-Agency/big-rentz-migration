@@ -13,6 +13,7 @@ const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 // Array of scripts that should not be run from this interactive script
 const dangerousScripts = [
   'reset-db',
+  'soft-reset-db',
   'delete',
   'delete-all',
   'init-db'
