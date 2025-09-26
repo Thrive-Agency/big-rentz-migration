@@ -22,6 +22,7 @@
     "bulk-process": "node app/bulk-process.js",
     "check-duplicates": "node app/check-duplicates.js",
     "get-recent-errors": "node app/get-recent-errors.js",
+    "extract-unique": "node app/extract-unique-data.js",
     "help": "node app/help.js"
   },
   "repository": {

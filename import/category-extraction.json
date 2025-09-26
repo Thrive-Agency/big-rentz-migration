@@ -1,0 +1,21 @@
+{
+  "description": "Extract unique category data and create category posts",
+  "cpt_slug": "equipment-categories",
+  "source_record_id": 1,
+  "processing_mode": "single_item",
+  "columns": {
+    "category_name": "equipment_category",
+    "category_description": "category_description",
+    "category_image": "category_image_url"
+  },
+  "wordpress_mapping": {
+    "fields": {
+      "title": "category_name",
+      "content": "category_description",
+      "acf.category_image": "category_image",
+      "acf.category_slug": "category_name"
+    },
+    "status": "publish"
+  },
+  "callback_function": "slugifyCategory"
+}

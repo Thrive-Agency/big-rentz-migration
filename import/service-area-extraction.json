@@ -1,0 +1,21 @@
+{
+  "description": "Extract service areas and create location posts with ACF repeater fields",
+  "cpt_slug": "service-locations",
+  "source_record_id": 1,
+  "processing_mode": "array_pairing",
+  "columns": {
+    "area_names": "service_area_names",
+    "area_descriptions": "service_area_descriptions",
+    "area_zipcodes": "service_area_zipcodes",
+    "area_populations": "service_area_populations"
+  },
+  "wordpress_mapping": {
+    "fields": {
+      "title": "location_name",
+      "content": "location_description",
+      "acf.service_areas": "repeater_data"
+    },
+    "status": "publish"
+  },
+  "callback_function": "buildServiceAreaRepeater"
+}

@@ -1,0 +1,20 @@
+{
+  "description": "Extract FAQ data and create individual FAQ posts",
+  "cpt_slug": "faqs",
+  "source_record_id": 1,
+  "processing_mode": "array_pairing",
+  "columns": {
+    "questions": "list_of_faq_question",
+    "answers": "list_of_faq_answer"
+  },
+  "wordpress_mapping": {
+    "fields": {
+      "title": "questions",
+      "content": "answers",
+      "acf.faq_question": "questions",
+      "acf.faq_answer": "answers"
+    },
+    "status": "publish"
+  },
+  "callback_function": "validateFaqData"
+}

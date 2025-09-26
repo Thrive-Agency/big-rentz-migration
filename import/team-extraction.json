@@ -1,0 +1,23 @@
+{
+  "description": "Extract team member data and create department posts with ACF repeater fields",
+  "cpt_slug": "departments",
+  "source_record_id": 1,
+  "processing_mode": "single_item",
+  "columns": {
+    "member_names": "team_member_names",
+    "member_titles": "team_member_titles", 
+    "member_emails": "team_member_emails",
+    "member_phones": "team_member_phones",
+    "member_bios": "team_member_bios",
+    "member_photos": "team_member_photo_urls"
+  },
+  "wordpress_mapping": {
+    "fields": {
+      "title": "department_name",
+      "content": "department_description",
+      "acf.team_members": "repeater_data"
+    },
+    "status": "publish"
+  },
+  "callback_function": "buildTeamMemberRepeater"
+}
